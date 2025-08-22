@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Header from "./components/Header";
 import ParticlesBackground from "./components/particles/ParticlesBackground";
+import PageTransition from "./components/PageTransition";
+import StarTransition from "./components/StarTransition";
 
 export const metadata: Metadata = {
   title: {
@@ -52,7 +54,9 @@ export default function RootLayout({
 
         {/* Contenu principal */}
         <main className="flex-1 relative isolate">
-          <div className="relative w-full min-h-full z-10">{children}</div>
+          <StarTransition />
+          {/* <div className="relative w-full min-h-full z-10">{children}</div> */}
+          <PageTransition>{children}</PageTransition>
         </main>
       </body>
     </html>

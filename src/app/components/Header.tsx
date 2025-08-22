@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
+import Image from "next/image";
 
 export default function Header() {
   const pathname = usePathname();
@@ -73,7 +74,7 @@ export default function Header() {
 
       {/* Mobile menu */}
       {isMenuOpen && (
-        <div className="md:hidden bg-[#1f242d] px-6 pt-4 pb-6">
+        <div className="md:hidden bg-[#101828] px-6 pt-4 pb-6 flex flex-col-reverse ">
           <div className="flex flex-col space-y-3">
             {navigation.map((item) => (
               <Link
@@ -88,6 +89,14 @@ export default function Header() {
                 {item.name}
               </Link>
             ))}
+          </div>
+          <div className="flex items-center justify-center">
+            <Image
+              src={"/assets/Logo_2.png"}
+              alt="logo"
+              width={50}
+              height={50}
+            />
           </div>
         </div>
       )}

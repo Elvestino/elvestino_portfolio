@@ -1,25 +1,26 @@
 "use client";
 import DownloadCV from "@/app/components/DownloadCV";
 import SocialLinks from "@/app/components/SocialLinks";
-import Image from "next/image";
 import { useEffect, useState } from "react";
+import Photos from "./components/photos/Photos";
+import Stats from "./components/stats/Stats";
 
 export default function Home() {
   const [currentText, setCurrentText] = useState(0);
   const texts = ["Front-End Developer", "Designer", "Data Analyst"];
 
-  // Effet de texte qui alterne automatiquement
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentText((prev) => (prev + 1) % texts.length);
     }, 4000);
     return () => clearInterval(interval);
   }, [texts.length]);
+
   return (
-    <main className="relative min-h-screen  text-white">
-      {/* Contenu */}
-      <section className="flex flex-col-reverse md:flex-row items-center justify-between gap-12 h-screen px-[9%] text-white">
-        {/* Texte */}
+    <main className="relative min-h-screen w-screen overflow-x-hidden overflow-y-auto text-white flex flex-col">
+      {/* Hero section */}
+      <section className="flex flex-col-reverse md:flex-row items-center justify-between gap-12 flex-grow px-[9%]">
+        {/* Texte à gauche */}
         <div className="max-w-xl">
           <p className="text-2xl tracking-wide">Hi, My name is</p>
           <h1 className="text-5xl font-bold mt-2">
@@ -56,43 +57,16 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Image */}
-        <div className="relative w-[300px] h-[300px] md:w-[400px] md:h-[400px] rounded-full flex items-center justify-center overflow-hidden">
-          {/* Bordures animées plus épaisses */}
-          <div
-            className="absolute w-[600px] h-[600px] rounded-full animate-spin-slow"
-            style={{
-              background:
-                "conic-gradient(transparent 0deg, transparent 300deg, #7cf03d 300deg 360deg)",
-              mask: "radial-gradient(farthest-side, black 90%, transparent 100%)",
-              WebkitMask:
-                "radial-gradient(farthest-side, black 90%, transparent 100%)",
-            }}
-          ></div>
-          <div
-            className="absolute w-[600px] h-[600px] rounded-full animate-spin-slow"
-            style={{
-              background:
-                "conic-gradient(transparent 0deg, transparent 300deg, #7cf03d 300deg 360deg)",
-              mask: "radial-gradient(farthest-side, black 90%, transparent 100%)",
-              WebkitMask:
-                "radial-gradient(farthest-side, black 90%, transparent 100%)",
-              animationDelay: "-5s",
-            }}
-          ></div>
-
-          {/* Conteneur image */}
-          <div className="relative w-full h-full rounded-full bg-[#1f242d] border border-[#1f242d] flex items-center justify-center z-10 overflow-hidden">
-            <Image
-              src="/assets/img/img2.png"
-              alt="profile"
-              width={350}
-              height={350}
-              className="object-cover mix-blend-lighten absolute top-6"
-            />
-          </div>
+        {/* Image à droite */}
+        <div className="mt-20 md:mt-0">
+          <Photos />
         </div>
       </section>
+
+      {/* Experience en bas */}
+      <div className="w-full ">
+        <Stats />
+      </div>
     </main>
   );
 }

@@ -24,7 +24,7 @@ export default function ParticlesBackground() {
       id="tsparticles"
       options={{
         background: {
-          color: { value: "#1f242d" },
+          color: { value: "#101828" },
         },
         fpsLimit: 60,
         interactivity: {
