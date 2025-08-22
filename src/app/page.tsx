@@ -22,9 +22,9 @@ export default function Home() {
       <section className="flex flex-col-reverse md:flex-row items-center justify-between gap-12 flex-grow px-[9%]">
         {/* Texte à gauche */}
         <div className="max-w-xl">
-          <p className="text-2xl md:text-xl tracking-wide">Hi, My name is</p>
+          <p className="text-2xl md:text-lg tracking-wide">Hi, My name is</p>
 
-          <h1 className="text-5xl md:text-4xl font-bold mt-2">
+          <h1 className="text-5xl md:text-3xl font-bold mt-2">
             <span className="text-transparent [-webkit-text-stroke:0.7px_#7cf03d] uppercase">
               TSIANOY
             </span>{" "}
@@ -32,7 +32,7 @@ export default function Home() {
           </h1>
 
           {/* Texte animé */}
-          <h2 className="mt-2 text-3xl md:text-2xl">
+          <h2 className="mt-2 text-3xl md:text-xl">
             I&apos;m a{" "}
             <span className="relative text-transparent [-webkit-text-stroke:0.7px_#7cf03d]">
               {texts[currentText]}
