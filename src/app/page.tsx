@@ -22,8 +22,9 @@ export default function Home() {
       <section className="flex flex-col-reverse md:flex-row items-center justify-between gap-12 flex-grow px-[9%]">
         {/* Texte à gauche */}
         <div className="max-w-xl">
-          <p className="text-2xl tracking-wide">Hi, My name is</p>
-          <h1 className="text-5xl font-bold mt-2">
+          <p className="text-2xl md:text-xl tracking-wide">Hi, My name is</p>
+
+          <h1 className="text-5xl md:text-4xl font-bold mt-2">
             <span className="text-transparent [-webkit-text-stroke:0.7px_#7cf03d] uppercase">
               TSIANOY
             </span>{" "}
@@ -31,7 +32,7 @@ export default function Home() {
           </h1>
 
           {/* Texte animé */}
-          <h2 className="mt-2 text-3xl">
+          <h2 className="mt-2 text-3xl md:text-2xl">
             I&apos;m a{" "}
             <span className="relative text-transparent [-webkit-text-stroke:0.7px_#7cf03d]">
               {texts[currentText]}
@@ -41,7 +42,7 @@ export default function Home() {
             </span>
           </h2>
 
-          <p className="mt-4 text-base text-justify leading-relaxed">
+          <p className="mt-4 text-base md:text-sm text-justify leading-relaxed">
             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Numquam
             quo placeat atque voluptates enim beatae ducimus eaque facere
             commodi. Eligendi fugit, reiciendis libero deserunt maiores qui quia
