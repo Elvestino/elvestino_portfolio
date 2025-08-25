@@ -4,7 +4,7 @@ import { usePathname } from "next/navigation";
 import { ReactNode } from "react";
 
 interface PageTransitionProps {
-  children: ReactNode; // ✅ type correct pour tout contenu React
+  children: ReactNode;
 }
 
 export default function PageTransition({ children }: PageTransitionProps) {

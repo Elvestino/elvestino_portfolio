@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import Image from "next/image";
 
@@ -10,14 +10,19 @@ export default function Header() {
   const pathname = usePathname();
   const router = useRouter();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => setIsScrolled(window.scrollY > 10);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const navigation = [
     { name: "Home", href: "/" },
     { name: "About me", href: "/pages/about" },
-    { name: "Education", href: "/pages/education" },
-    { name: "Experience", href: "/pages/experience" },
+    { name: "Resume", href: "/pages/resume" },
     { name: "Projects", href: "/pages/projects" },
-    { name: "Skills", href: "/pages/skills" },
     { name: "Contact", href: "/pages/contact" },
   ];
   const hanldeHome = () => {
@@ -25,7 +30,11 @@ export default function Header() {
   };
 
   return (
-    <header className="w-full top-0 z-50 fixed">
+    <header
+      className={`w-full top-0 z-50 fixed transition-all duration-300 ${
+        isScrolled ? "bg-[#101828]/80 backdrop-blur-md shadow-lg" : ""
+      }`}
+    >
       <div className="max-w-full px-6 md:px-40">
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
