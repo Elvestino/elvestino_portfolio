@@ -3,52 +3,45 @@
 import { useState } from "react";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 
+import { FaGraduationCap } from "react-icons/fa";
+
 const educationData = [
   {
     title: "First year of Master's degree",
     school:
       "School of Management and Technological Innovation (EMIT - Fianrantsoa)",
-    description:
-      "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quod quam iusto aut saepe tempora dicta.",
+    description: "2025 - Present",
+    icon: FaGraduationCap,
   },
-  {
-    title: "Professional internship at EMIT",
-    school: "",
-    description:
-      "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quod quam iusto aut saepe tempora dicta.",
-  },
+
   {
     title: "Third year of Bachelor's degree",
     school:
       "School of Management and Technological Innovation (EMIT - Fianrantsoa)",
-    description:
-      "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quod quam iusto aut saepe tempora dicta.",
+    description: "2023 - 2024",
+    icon: FaGraduationCap,
   },
-  {
-    title: "Professional internship at SRB Ihorombe",
-    school: "",
-    description:
-      "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quod quam iusto aut saepe tempora dicta.",
-  },
+
   {
     title: "Second year of Bachelor's degree",
     school:
-      "School of Management and Technological Innovation (EMIT - Fianrantsoa)",
-    description:
-      "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quod quam iusto aut saepe tempora dicta.",
+      "School of Management and Technological Innovation (EMIT - Fianarantsoa)",
+    description: "2022 - 2023",
+    icon: FaGraduationCap,
   },
-  {
-    title: "Test",
-    school: "",
-    description:
-      "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quod quam iusto aut saepe tempora dicta.",
-  },
+
   {
     title: "First year of Bachelor's degree",
     school:
-      "School of Management and Technological Innovation (EMIT - Fianrantsoa)",
-    description:
-      "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quod quam iusto aut saepe tempora dicta.",
+      "School of Management and Technological Innovation (EMIT - Fianarantsoa)",
+    description: "2021 - 2022",
+    icon: FaGraduationCap,
+  },
+  {
+    title: "Baccalaureate - Series D",
+    school: "Lycée Saint Joseph de Cluny (SJC - Fianarantsoa)",
+    description: "2019 - 2020",
+    icon: FaGraduationCap,
   },
 ];
 
@@ -75,22 +68,28 @@ export default function Education() {
 
       {/* Desktop / Tablet Grid */}
       <div className="hidden sm:grid max-w-6xl mx-auto grid-cols-2 lg:grid-cols-3 gap-6">
-        {educationData.map((edu, index) => (
-          <div
-            key={index}
-            className="bg-[#22222c] text-white rounded-xl p-6 shadow-lg
-             transition-all duration-300 transform
+        {educationData.map((edu, index) => {
+          const Icon = edu.icon;
+          return (
+            <div
+              key={index}
+              className="bg-[#22222c] text-white rounded-xl p-6 shadow-lg
+               transition-all duration-300 transform
              hover:scale-105 hover:-translate-y-2 hover:shadow-[#7cf03d]/50"
-          >
-            <h3 className="text-xl font-semibold mb-2 text-[#7cf03d]">
-              {edu.title}
-            </h3>
-            {edu.school && (
-              <p className="text-gray-400 font-bold mb-2">{edu.school}</p>
-            )}
-            <p className="text-base font-medium">{edu.description}</p>
-          </div>
-        ))}
+            >
+              <div className="flex justify-center items-center gap-2 mb-4">
+                <Icon className="text-[#7cf03d] text-5xl" />
+                <h3 className="text-xl font-semibold mb-2 text-[#7cf03d]">
+                  {edu.title}
+                </h3>
+              </div>
+              {edu.school && (
+                <p className="text-gray-400 font-bold mb-2">{edu.school}</p>
+              )}
+              <p className="text-base font-medium">Years : {edu.description}</p>
+            </div>
+          );
+        })}
       </div>
 
       {/* Mobile Carousel */}
@@ -114,20 +113,28 @@ export default function Education() {
             className="flex transition-transform duration-300 gap-4"
             style={{ transform: `translateX(-${currentIndex * 100}%)` }}
           >
-            {educationData.map((edu, index) => (
-              <div
-                key={index}
-                className="flex-shrink-0 w-[94%] mx-auto bg-[#22222c] text-white rounded-xl p-6 shadow-lg "
-              >
-                <h3 className="text-xl font-semibold mb-2 text-[#7cf03d]">
-                  {edu.title}
-                </h3>
-                {edu.school && (
-                  <p className="text-gray-400 font-bold mb-2">{edu.school}</p>
-                )}
-                <p className="text-base font-medium">{edu.description}</p>
-              </div>
-            ))}
+            {educationData.map((edu, index) => {
+              const Icon = edu.icon;
+              return (
+                <div
+                  key={index}
+                  className="flex-shrink-0 w-[94%] mx-auto bg-[#22222c] text-white rounded-xl p-6 shadow-lg "
+                >
+                  <div className="flex items-center justify-center gap-2">
+                    <Icon className="text-[#7cf03d] text-5xl" />
+                    <h3 className="text-xl font-semibold mb-2 text-[#7cf03d]">
+                      {edu.title}
+                    </h3>
+                  </div>
+                  {edu.school && (
+                    <p className="text-gray-400 font-bold mb-2">{edu.school}</p>
+                  )}
+                  <p className="text-base font-medium">
+                    <span className="italic"> Years :</span> {edu.description}
+                  </p>
+                </div>
+              );
+            })}
           </div>
         </div>
 

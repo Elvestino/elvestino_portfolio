@@ -29,7 +29,11 @@ export default function Page() {
           with technologies such as{" "}
           <span className="font-semibold text-[#7cf03d]">ReactJS</span> and{" "}
           <span className="font-semibold text-[#7cf03d]">NextJS</span>. <br /> I
-          value teamwork, clear communication, and continuous learning. I enjoy
+          focus on{" "}
+          <span className="font-semibold text-[#7cf03d]">data analysis</span>{" "}
+          using <span className="font-semibold text-[#7cf03d]">PowerBi</span> as
+          a tool for analysis, modeling, and visualization. <br /> I value
+          teamwork, clear communication, and continuous learning. I enjoy
           solving real-world problems and turning ideas into well-crafted
           digital experiences.
         </p>

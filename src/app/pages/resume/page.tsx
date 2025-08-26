@@ -72,7 +72,7 @@ export default function Page() {
             <TabsTrigger
               key={tab.id}
               value={tab.id}
-              className="transition text-base md:text-2xl px-4 py-3 md:px-10 md:py-6 cursor-pointer 
+              className="transition text-base md:text-2xl px-4 py-3 md:px-10 md:py-2 cursor-pointer 
               data-[state=active]:text-[#7cf03d] 
               rounded hover:border-[#7cf03d] duration-500 
               hover:bg-[#7cf03d] hover:text-[#1f242d] hover:shadow-[0_0_10px_#7cf03d]"

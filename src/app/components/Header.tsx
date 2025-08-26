@@ -26,13 +26,15 @@ export default function Header() {
     { name: "Contact", href: "/pages/contact" },
   ];
   const hanldeHome = () => {
-    router.push("/pages/home");
+    router.push("/");
   };
 
   return (
     <header
       className={`w-full top-0 z-50 fixed transition-all duration-300 ${
-        isScrolled ? "bg-[#101828]/80 backdrop-blur-md shadow-lg" : ""
+        isScrolled
+          ? "md:bg-[#101828]/80 md:backdrop-blur-md md:shadow-lg" // blur/shadow seulement dès md
+          : ""
       }`}
     >
       <div className="max-w-full px-6 md:px-40">
@@ -66,10 +68,10 @@ export default function Header() {
           </nav>
 
           {/* Mobile menu button */}
-          <div className="md:hidden">
+          <div className="md:hidden ">
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="inline-flex items-center justify-center p-2 rounded-md text-white hover:bg-[#14171d]"
+              className="inline-flex items-center justify-center p-2 rounded-md text-white hover:bg-[#7cf03d] hover:text-[#101828] duration-500 cursor-pointer"
             >
               {isMenuOpen ? (
                 <X className="h-6 w-6" />
@@ -82,33 +84,35 @@ export default function Header() {
       </div>
 
       {/* Mobile menu */}
-      {isMenuOpen && (
-        <div className="md:hidden bg-[#101828] px-6 pt-4 pb-6 flex flex-col-reverse ">
-          <div className="flex flex-col space-y-3">
-            {navigation.map((item) => (
-              <Link
-                key={item.name}
-                href={item.href}
-                className={`block text-lg font-medium ${
-                  pathname === item.href
-                    ? "text-[#7cf03d] font-bold"
-                    : "text-white hover:text-[#7cf03d]"
-                }`}
-              >
-                {item.name}
-              </Link>
-            ))}
-          </div>
-          <div className="flex items-center justify-center">
-            <Image
-              src={"/assets/Logo_2.png"}
-              alt="logo"
-              width={50}
-              height={50}
-            />
-          </div>
+      {/* {isMenuOpen && ( */}
+      <div
+        className={`md:hidden bg-[#101828] px-6 pt-4 pb-6 flex flex-col-reverse transition-all duration-500 ease-in-out transform  ${
+          isMenuOpen
+            ? "translate-x-0 opacity-100"
+            : "translate-x-full opacity-0"
+        }`}
+      >
+        <div className="flex flex-col space-y-3">
+          {navigation.map((item) => (
+            <Link
+              key={item.name}
+              href={item.href}
+              className={`block text-lg font-medium ${
+                pathname === item.href
+                  ? "text-[#7cf03d] font-bold"
+                  : "text-white hover:text-[#7cf03d]"
+              }`}
+              onClick={() => setIsMenuOpen(false)}
+            >
+              {item.name}
+            </Link>
+          ))}
         </div>
-      )}
+        <div className="flex items-center justify-center">
+          <Image src={"/assets/Logo_2.png"} alt="logo" width={50} height={50} />
+        </div>
+      </div>
+      {/* )} */}
     </header>
   );
 }
