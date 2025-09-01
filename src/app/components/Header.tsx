@@ -81,6 +81,13 @@ export default function Header() {
           </div>
         </div>
       </div>
+      {/* Overlay quand le menu mobile est ouvert */}
+      {isMenuOpen && (
+        <div
+          className="fixed inset-0 bg-black/40 backdrop-blur-md z-30"
+          onClick={() => setIsMenuOpen(false)}
+        />
+      )}
 
       {/* Mobile menu (slide depuis la droite) */}
       <div
