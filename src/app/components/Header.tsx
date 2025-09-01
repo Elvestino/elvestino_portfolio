@@ -25,6 +25,7 @@ export default function Header() {
     { name: "Projects", href: "/pages/projects" },
     { name: "Contact", href: "/pages/contact" },
   ];
+
   const hanldeHome = () => {
     router.push("/");
   };
@@ -32,9 +33,7 @@ export default function Header() {
   return (
     <header
       className={`w-full top-0 z-50 fixed transition-all duration-300 ${
-        isScrolled
-          ? "md:bg-[#101828]/80 md:backdrop-blur-md md:shadow-lg" // blur/shadow seulement dès md
-          : ""
+        isScrolled ? "md:bg-[#101828]/80 md:backdrop-blur-md md:shadow-lg" : ""
       }`}
     >
       <div className="max-w-full px-6 md:px-40">
@@ -68,7 +67,7 @@ export default function Header() {
           </nav>
 
           {/* Mobile menu button */}
-          <div className="md:hidden ">
+          <div className="md:hidden">
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="inline-flex items-center justify-center p-2 rounded-md text-white hover:bg-[#7cf03d] hover:text-[#101828] duration-500 cursor-pointer"
@@ -83,36 +82,51 @@ export default function Header() {
         </div>
       </div>
 
-      {/* Mobile menu */}
-      {/* {isMenuOpen && ( */}
+      {/* Mobile menu (slide depuis la droite) */}
       <div
-        className={`md:hidden bg-[#101828] px-6 pt-4 pb-6 flex flex-col-reverse transition-all duration-500 ease-in-out transform  ${
-          isMenuOpen
-            ? "translate-x-0 opacity-100"
-            : "translate-x-full opacity-0"
+        className={`fixed top-0 right-0 h-full w-64 bg-[#101828] z-40 transform transition-transform duration-500 ease-in-out md:hidden ${
+          isMenuOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
-        <div className="flex flex-col space-y-3">
-          {navigation.map((item) => (
-            <Link
-              key={item.name}
-              href={item.href}
-              className={`block text-lg font-medium ${
-                pathname === item.href
-                  ? "text-[#7cf03d] font-bold"
-                  : "text-white hover:text-[#7cf03d]"
-              }`}
-              onClick={() => setIsMenuOpen(false)}
-            >
-              {item.name}
-            </Link>
-          ))}
-        </div>
-        <div className="flex items-center justify-center">
-          <Image src={"/assets/Logo_2.png"} alt="logo" width={50} height={50} />
+        {/* Bouton close */}
+        <button
+          onClick={() => setIsMenuOpen(false)}
+          className="absolute top-4 right-4 text-white p-2 hover:bg-[#7cf03d] hover:text-[#101828] rounded-md duration-500 cursor-pointer"
+        >
+          <X className="h-6 w-6" />
+        </button>
+
+        <div className="flex flex-col h-full justify-between items-center p-6 pt-16">
+          <div className="flex flex-col space-y-3">
+            <Image
+              src={"/assets/Logo_2.png"}
+              alt="logo"
+              width={50}
+              height={50}
+            />
+            {navigation.map((item) => (
+              <Link
+                key={item.name}
+                href={item.href}
+                className={`block text-lg font-medium ${
+                  pathname === item.href
+                    ? "text-[#7cf03d] font-bold"
+                    : "text-white hover:text-[#7cf03d]"
+                }`}
+                onClick={() => setIsMenuOpen(false)}
+              >
+                {item.name}
+              </Link>
+            ))}
+          </div>
+          {/* Copyright en bas */}
+          <div className="text-center text-white text-sm mb-2">
+            &copy; {new Date().getFullYear()}{" "}
+            <span className="text-[#7cf03d]">Elvestino.</span> <br /> All rights
+            reserved.
+          </div>
         </div>
       </div>
-      {/* )} */}
     </header>
   );
 }
