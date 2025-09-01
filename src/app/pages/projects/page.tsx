@@ -1,6 +1,8 @@
 "use client";
 import { useState } from "react";
 import ProjectCard from "@/app/components/ProjectCard";
+
+import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { ProjectType } from "@/app/models/projectType";
 
 // Exemple de données
@@ -38,7 +40,7 @@ const emit_project: ProjectType[] = [
     month: 1,
     statusCompleted: true,
     description: "Application de gestion des élèves au sein de l'EMIT",
-    technology: ["AngularJS", "UUID", "Scss"],
+    technology: ["AngularJS", "UUID", "Scss", "SweetAlert2"],
     nbrContribuate: 1,
     github: "https://github.com/Elvestino/EmitProjet",
     key: [
@@ -178,6 +180,19 @@ const categories: { title: string; projects: ProjectType[] }[] = [
 
 export default function Page() {
   const [activeTab, setActiveTab] = useState("All");
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const nextSlide = () => {
+    setCurrentIndex((prev) =>
+      prev === currentCategory.projects.length - 1 ? 0 : prev + 1
+    );
+  };
+
+  const prevSlide = () => {
+    setCurrentIndex((prev) =>
+      prev === 0 ? currentCategory.projects.length - 1 : prev - 1
+    );
+  };
 
   const currentCategory =
     categories.find((cat) => cat.title === activeTab) || categories[0];
@@ -217,11 +232,54 @@ export default function Page() {
         ))}
       </div>
 
-      {/* ---------------- Grille des projets ---------------- */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {/* ---------------- Grille des projets version normal ---------------- */}
+      <div className="hidden sm:grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {currentCategory.projects.map((project, idx) => (
           <ProjectCard key={idx} project={project} />
         ))}
+      </div>
+
+      {/*Grille des projets version Mobile Carousel */}
+      <div className="sm:hidden max-w-md mx-auto relative">
+        {/* Flèches */}
+        <button
+          onClick={prevSlide}
+          className="absolute left-[-45px] top-1/2 -translate-y-1/2 text-[#7cf03d] text-3xl p-1 cursor-pointer border border-[#7cf03d] rounded-full hover:bg-[#7cf03d] hover:text-[#1f242d] hover:shadow-[0_0_10px_#7cf03d] duration-500"
+        >
+          <IoIosArrowBack />
+        </button>
+        <button
+          onClick={nextSlide}
+          className="absolute right-[-45px] top-1/2 -translate-y-1/2 text-[#7cf03d] text-3xl p-1 cursor-pointer border border-[#7cf03d] rounded-full hover:bg-[#7cf03d] hover:text-[#1f242d] hover:shadow-[0_0_10px_#7cf03d] duration-500"
+        >
+          <IoIosArrowForward />
+        </button>
+
+        <div className="overflow-hidden">
+          <div
+            className="flex transition-transform duration-300 gap-4"
+            style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+          >
+            {currentCategory.projects.map((project, index) => (
+              <div key={index} className="flex-shrink-0 w-[94%] mx-auto">
+                <ProjectCard key={index} project={project} />
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Dots */}
+        <div className="flex justify-center mt-4 gap-2">
+          {currentCategory.projects.map((_, index) => (
+            <span
+              key={index}
+              onClick={() => setCurrentIndex(index)}
+              className={`w-3 h-3 rounded-full cursor-pointer transition-all ${
+                index === currentIndex ? "bg-[#7cf03d]" : "bg-gray-500"
+              }`}
+            ></span>
+          ))}
+        </div>
       </div>
     </div>
   );

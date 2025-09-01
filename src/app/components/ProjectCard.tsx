@@ -22,20 +22,21 @@ export default function ProjectCard({ project }: { project: ProjectType }) {
   return (
     <Card className="overflow-hidden rounded shadow-lg bg-[#22222c] md:hover:bg-[#101828] transition-all md:hover:scale-105 md:hover:-translate-y-2 md:hover:shadow-[0_0_10px_#7cf03d] duration-500">
       {/* Image slider */}
-      <div className="relative h-1/2 w-full">
+      <div className="relative w-full h-48 sm:h-56 md:h-64 lg:h-72">
         <div
           className="relative w-full h-full flex transition-transform duration-700 ease-in-out"
           style={{ transform: `translateX(-${currentImage * 100}%)` }}
         >
           {project.images.map((img, i) => (
-            <div key={i} className="relative w-full h-64 flex-shrink-0">
+            <div key={i} className="relative w-full h-full flex-shrink-0">
               <Image
                 src={img}
                 alt={`${project.title} image ${i + 1}`}
                 fill
-                sizes="(max-width: 768px) 100vw, 
-         (max-width: 1024px) 50vw, 
-         33vw"
+                priority={i === 0}
+                sizes="(max-width: 640px) 100vw,
+                       (max-width: 1024px) 50vw,
+                       33vw"
                 className="object-cover"
               />
             </div>
@@ -56,15 +57,18 @@ export default function ProjectCard({ project }: { project: ProjectType }) {
       </div>
 
       {/* Texte */}
-      <CardHeader className="px-2 sm:px-4 pt-2 text-[#7cf03d] ">
-        <div className="flex justify-between items-center pr-4">
+      <CardHeader className="px-3 sm:px-4 pt-2 text-[#7cf03d]">
+        <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2 sm:gap-4">
           {/* Titre */}
-          <CardTitle className="text-2xl">{project.title}</CardTitle>
+          <CardTitle className="text-lg sm:text-xl md:text-2xl">
+            {project.title}
+          </CardTitle>
+
           {/* Status + Github */}
-          <div className="flex justify-start gap-4 items-center mt-3">
+          <div className="flex flex-wrap justify-start gap-3 items-center">
             {/* Status */}
             <span
-              className={`inline-block px-2 py-1 text-xs font-semibold rounded ${
+              className={`inline-block px-2 py-1 text-xs sm:text-sm font-semibold rounded ${
                 project.statusCompleted
                   ? "bg-green-500 text-white"
                   : "bg-yellow-500 text-black"
@@ -79,37 +83,39 @@ export default function ProjectCard({ project }: { project: ProjectType }) {
                 href={project.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 group"
+                className="flex items-center gap-2 group border border-gray-600 px-2 py-1 rounded hover:border-[#7cf03d] transition duration-300"
               >
-                <FaGithub className="text-white text-2xl transition-transform duration-300 group-hover:scale-125 group-hover:text-[#7cf03d]" />
-                <span className="text-xs text-gray-300 group-hover:text-[#7cf03d]">
+                <FaGithub className="text-white text-lg sm:text-xl transition-transform duration-300 group-hover:scale-125 group-hover:text-[#7cf03d]" />
+                <span className="text-xs sm:text-sm text-gray-300 group-hover:text-[#7cf03d]">
                   Disponible
                 </span>
               </a>
             ) : (
-              <div className="flex items-center gap-2">
-                <FaGithub className="text-gray-500 text-2xl" />
-                <span className="text-xs text-red-400 font-bold">
+              <div className="flex items-center gap-2 group border border-gray-600 px-2 py-1 rounded cursor-not-allowed hover:border-red-400 transition duration-300">
+                <FaGithub className="text-gray-500 text-lg sm:text-xl" />
+                <span className="text-xs sm:text-sm text-red-400 font-bold">
                   Confidentiel
                 </span>
               </div>
             )}
           </div>
         </div>
+
         {/* description */}
-        <p className="text-[16px] text-gray-400 mb-2">{project.description}</p>
+        <p className="text-sm sm:text-base text-gray-400 my-2">
+          {project.description}
+        </p>
 
         {/* Mois / Année / Contributeurs */}
-        <div className="flex justify-start gap-3 text-sm text-gray-300 mb-2">
-          <span className="text-[#7cf03d] flex items-center justify-center gap-1">
+        <div className="flex flex-wrap gap-3 text-xs sm:text-sm text-gray-300 mb-2">
+          <span className="text-[#7cf03d] flex items-center gap-1">
             <AiOutlineCalendar />
             {project.month} <span className="text-gray-400">Mois</span>
           </span>
-          <span className="text-[#7cf03d] flex items-center justify-center gap-1">
-            {" "}
-            <span className="text-gray-400">Annee :</span> {project.year}
+          <span className="text-[#7cf03d] flex items-center gap-1">
+            <span className="text-gray-400">Année :</span> {project.year}
           </span>
-          <span className="text-[#7cf03d] flex items-center justify-center gap-1">
+          <span className="text-[#7cf03d] flex items-center gap-1">
             <FaUsers />
             {project.nbrContribuate}{" "}
             <span className="text-gray-400">developpeur</span>
@@ -119,7 +125,7 @@ export default function ProjectCard({ project }: { project: ProjectType }) {
         {/* Fonctionnalités */}
         <div className="mb-2">
           <h4 className="text-sm font-semibold text-white">
-            Fonctionnalit&eacute;s cl&eacute; :
+            Fonctionnalités clé :
           </h4>
           <div className="flex flex-wrap gap-2 mt-1">
             {project.key.map((tech, i) => (
@@ -135,7 +141,9 @@ export default function ProjectCard({ project }: { project: ProjectType }) {
 
         {/* Technologies */}
         <div className="mb-2">
-          <h4 className="text-sm font-semibold text-white">Technology used:</h4>
+          <h4 className="text-sm font-semibold text-white">
+            Technologies utilisées :
+          </h4>
           <div className="flex flex-wrap gap-2 mt-1">
             {project.technology.map((tech, i) => (
               <span
