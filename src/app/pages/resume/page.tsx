@@ -44,15 +44,12 @@ export default function Page() {
 
   return (
     <div className="p-6 m-24">
-      <div className="mx-auto p-6 mb-8">
-        <h2 className="text-4xl md:text-6xl text-center mb-4">
+      <div className="mx-auto p-6 mb-16 md:mb-6">
+        <h2 className="text-4xl md:text-6xl text-center md:mb-6 mb-10">
           Why <span className="text-[#7cf03d]">hire me</span> ?
         </h2>
-        <p className="text-sm md:text-base text-justify">
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Omnis non
-          dolore temporibus tenetur provident quaerat dolores saepe nisi nulla
-          iure nobis est magni fuga explicabo, excepturi tempora aut molestias
-          incidunt.
+        <p className="text-sm md:text-lg text-center">
+          Here are some reasons to hire me
         </p>
       </div>
 

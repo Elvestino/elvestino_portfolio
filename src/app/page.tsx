@@ -44,7 +44,11 @@ export default function Home() {
 
           <p className="mt-4 text-base text-justify leading-relaxed">
             Master’s degree in Data Science and Artificial Intelligence (SDIA)
-            at EMIT Fianarantsoa
+            at EMIT Fianarantsoa <br />
+            To build meaningful digital solutions in the fields of Web
+            Development and Data Science, and to collaborate with passionate
+            teams that share the same curiosity and dedication for learning and
+            innovation.
           </p>
 
           {/* Bouton + Réseaux */}

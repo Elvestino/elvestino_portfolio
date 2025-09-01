@@ -9,7 +9,15 @@ import Next from "./components/NextJS";
 import Python from "./components/Python";
 import TailwindCSS from "./components/Tailwind";
 import NodeJS from "./components/Node";
+import { FaGamepad, FaFilm, FaMusic, FaBasketballBall } from "react-icons/fa";
 
+// Déclarer les interests
+const interests = [
+  { title: "Video Games", icon: FaGamepad },
+  { title: "Japanese Animation & Cinema", icon: FaFilm },
+  { title: "Music", icon: FaMusic },
+  { title: "Basketball", icon: FaBasketballBall },
+];
 const skills = [
   {
     name: "NextJS",
@@ -88,6 +96,7 @@ export default function Skills() {
 
   return (
     <section className="skills py-12" id="skills">
+      {/* SKILLS */}
       <h2 className="text-4xl font-bold text-center mb-10">
         My <span className="text-[#7cf03d]">Skills</span>
       </h2>
@@ -148,6 +157,25 @@ export default function Skills() {
               </p>
             </div>
           ))}
+        </div>
+      </div>
+      {/* Personal Interests */}
+      <div className="mt-12">
+        <h3 className="text-2xl sm:text-3xl font-bold text-center mb-6 text-white">
+          Personal <span className="text-[#7cf03d]">Interests</span>
+        </h3>
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 place-items-center max-w-4xl mx-auto">
+          {interests.map((interest, i) => {
+            const Icon = interest.icon;
+            return (
+              <div key={i} className="flex flex-col items-center gap-2 ">
+                <Icon className="text-[#7cf03d] text-4xl" />
+                <span className="text-white text-sm sm:text-base text-center">
+                  {interest.title}
+                </span>
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>

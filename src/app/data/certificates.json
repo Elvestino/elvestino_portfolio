@@ -1,0 +1,19 @@
+[
+  {
+    "id": 1,
+    "title": "Certification Power BI",
+    "year": 2025,
+    "status": true,
+    "images": [
+      "/assets/img/certification/image1.jpg",
+      "/assets/img/certification/image2.jpg"
+    ]
+  },
+  {
+    "id": 2,
+    "title": "Certification de la plateforme DHIS2",
+    "year": 2025,
+    "status": false,
+    "images": ["/assets/img/certification/dhis2.png"]
+  }
+]
