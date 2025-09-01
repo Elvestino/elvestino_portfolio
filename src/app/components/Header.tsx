@@ -97,12 +97,12 @@ export default function Header() {
         </button>
 
         <div className="flex flex-col h-full justify-between items-center p-6 pt-16">
-          <div className="flex flex-col space-y-3">
+          <div className="flex flex-col items-center space-y-3">
             <Image
               src={"/assets/Logo_2.png"}
               alt="logo"
-              width={50}
-              height={50}
+              width={70}
+              height={70}
             />
             {navigation.map((item) => (
               <Link
