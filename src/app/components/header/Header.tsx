@@ -22,18 +22,22 @@ export default function Header() {
 
   return (
     <>
-      <HeaderDesktop
-        pathname={pathname}
-        navigation={navigation}
-        onHomeClick={handleHomeClick}
-      />
-      <HeaderMobile
-        pathname={pathname}
-        navigation={navigation}
-        isMenuOpen={isMenuOpen}
-        setIsMenuOpen={setIsMenuOpen}
-        onHomeClick={handleHomeClick}
-      />
+      <div className="hidden md:block">
+        <HeaderDesktop
+          pathname={pathname}
+          navigation={navigation}
+          onHomeClick={handleHomeClick}
+        />
+      </div>
+      <div className="block md:hidden">
+        <HeaderMobile
+          pathname={pathname}
+          navigation={navigation}
+          isMenuOpen={isMenuOpen}
+          setIsMenuOpen={setIsMenuOpen}
+          onHomeClick={handleHomeClick}
+        />
+      </div>
     </>
   );
 }
