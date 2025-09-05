@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { FaGamepad, FaFilm, FaMusic, FaBasketballBall } from "react-icons/fa";
 import {
   Tooltip,
@@ -10,6 +10,8 @@ import {
   TooltipTrigger,
 } from "../ui/tooltip";
 import { motion } from "framer-motion";
+import { Dialog, DialogClose, DialogContent, DialogTitle } from "../ui/dialog";
+import { X } from "lucide-react";
 
 // Déclarer les interests
 const interests = [
@@ -62,8 +64,14 @@ const circles = [
   { label: "Problem Solving", percent: 50 },
   { label: "Teamwork", percent: 80 },
 ];
+type Skill = {
+  name: string;
+  img: string;
+  percent: number;
+};
 
 export default function Skills() {
+  const [selectedSkill, setSelectedSkill] = useState<Skill | null>(null);
   useEffect(() => {
     // animation conic-gradient dynamique
     circles.forEach((c, i) => {
@@ -86,7 +94,7 @@ export default function Skills() {
   }, []);
 
   return (
-    <section className="skills py-12" id="skills">
+    <section className=" px-4 sm:px-6 lg:px-12 py-8 max-md:mx-5">
       {/* SKILLS */}
       <h2 className="text-4xl font-bold text-center mb-10">
         My <span className="text-[#7cf03d]">Skills</span>
@@ -99,7 +107,12 @@ export default function Skills() {
             <TooltipProvider key={index}>
               <Tooltip>
                 <TooltipTrigger asChild>
-                  <div className="p-4 sm:p-6 border border-[#7cf03d] rounded-xl flex flex-col items-center gap-3 cursor-pointer hover:scale-105 hover:shadow-[0_0_15px_#7cf03d] transition duration-300">
+                  <motion.div
+                    onClick={() => setSelectedSkill(skill)} // ouvre le modal mobile
+                    whileHover={{ scale: 1.05, boxShadow: "0 0 15px #7cf03d" }} // hover desktop
+                    whileTap={{ scale: 1.05, boxShadow: "0 0 15px #7cf03d" }} // click mobile
+                    className="p-4 sm:p-6 border border-[#7cf03d] rounded-xl flex flex-col items-center gap-3 cursor-pointer transition duration-300"
+                  >
                     <div className="flex items-center justify-center w-[50px] h-[50px] sm:w-[60px] sm:h-[60px]">
                       <Image
                         src={skill.img}
@@ -112,7 +125,7 @@ export default function Skills() {
                     <span className="text-sm sm:text-lg text-white font-medium text-center mt-2">
                       {skill.name}
                     </span>
-                  </div>
+                  </motion.div>
                 </TooltipTrigger>
 
                 <TooltipContent
@@ -153,7 +166,7 @@ export default function Skills() {
         </div>
 
         {/* Soft Skills */}
-        <div className="grid grid-cols-2 gap-6  place-items-center">
+        <div className="grid grid-cols-2 gap-6 place-items-center">
           {circles.map((circle, i) => (
             <div
               key={i}
@@ -178,8 +191,9 @@ export default function Skills() {
           ))}
         </div>
       </div>
+
       {/* Personal Interests */}
-      <div className="mt-12">
+      <div className="mt-5 max-md:mx-5">
         <h3 className="text-2xl sm:text-3xl font-bold text-center mb-6 text-white">
           Personal <span className="text-[#7cf03d]">Interests</span>
         </h3>
@@ -197,6 +211,57 @@ export default function Skills() {
           })}
         </div>
       </div>
+
+      {/* Modal pour mobile (max-md) */}
+      <Dialog
+        open={!!selectedSkill}
+        onOpenChange={() => setSelectedSkill(null)}
+      >
+        <DialogContent className="max-md:max-w-xs max-md:mx-auto max-md:p-4 max-md:rounded-xl max-md:bg-[#1f242d] max-md:border max-md:border-[#7cf03d]">
+          {/* Titre obligatoire pour accessibilité */}
+          {selectedSkill && (
+            <DialogTitle className="text-white text-center text-lg font-semibold mb-2">
+              Mastery
+            </DialogTitle>
+          )}
+
+          {/* Bouton fermeture X */}
+          <DialogClose className="absolute right-3 top-3 text-white hover:text-[#7cf03d]">
+            <X />
+          </DialogClose>
+          {/* Contenu du skill */}
+          {selectedSkill && <SkillDetails skill={selectedSkill} />}
+        </DialogContent>
+      </Dialog>
     </section>
+  );
+}
+
+// 🔹 Composant partagé Tooltip + Modal
+function SkillDetails({ skill }: { skill: Skill }) {
+  return (
+    <div className="w-full">
+      <p className="mb-2 text-sm text-center font-medium">
+        {skill.name} – {skill.percent}%
+      </p>
+
+      {/* Barre de progression avec glow */}
+      <div className="relative w-full h-2 bg-gray-700 rounded-full overflow-hidden">
+        {/* Glow animé */}
+        <motion.div
+          initial={{ width: 0, opacity: 0.4 }}
+          animate={{ width: `${skill.percent}%`, opacity: 1 }}
+          transition={{ duration: 1.2, ease: "easeOut" }}
+          className="absolute top-0 left-0 h-full bg-[#7cf03d] blur-md"
+        />
+        {/* Barre principale */}
+        <motion.div
+          initial={{ width: 0 }}
+          animate={{ width: `${skill.percent}%` }}
+          transition={{ duration: 1.2, ease: "easeOut" }}
+          className="relative h-full bg-[#7cf03d]"
+        />
+      </div>
+    </div>
   );
 }

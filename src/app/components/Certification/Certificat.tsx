@@ -35,7 +35,7 @@ export default function Certificates() {
   const closeModal = () => setModalData(null);
 
   return (
-    <section className="py-12">
+    <section className="px-4 sm:px-6 lg:px-12 py-8 max-md:mx-5">
       <h2 className="text-4xl font-bold text-center mb-12 text-white">
         My <span className="text-[#7cf03d]">Certificates</span>
       </h2>
@@ -78,7 +78,7 @@ export default function Certificates() {
             style={{ transform: `translateX(-${currentIndex * 100}%)` }}
           >
             {certificates.map((cert, index) => (
-              <div key={index} className="flex-shrink-0 w-[94%] mx-auto">
+              <div key={index} className="flex-shrink-0 max-md:w-[95%] mx-auto">
                 <CertificateCard
                   title={cert.title}
                   year={cert.year}

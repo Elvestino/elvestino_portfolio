@@ -8,15 +8,46 @@ import Education from "@/app/components/Education/Education";
 import Skills from "@/app/components/Skills/Skills";
 import Certificat from "@/app/components/Certification/Certificat";
 import Tools from "@/app/components/tools/Tools";
+import {
+  GraduationCap,
+  BriefcaseBusiness,
+  Award,
+  Wrench,
+  Sparkles,
+} from "lucide-react";
 
 const tabs = [
-  { id: "experience", label: "Experience", component: <Experience /> },
-  { id: "education", label: "Education", component: <Education /> },
-  { id: "certificat", label: "Certification", component: <Certificat /> },
-  { id: "tools", label: "Tools", component: <Tools /> },
-  { id: "skills", label: "Skills", component: <Skills /> },
+  {
+    id: "experience",
+    label: "Experience",
+    icon: <BriefcaseBusiness className="w-5 h-5 md:w-6 md:h-6" />,
+    component: <Experience />,
+  },
+  {
+    id: "education",
+    label: "Education",
+    icon: <GraduationCap className="w-5 h-5 md:w-6 md:h-6" />,
+    component: <Education />,
+  },
+  {
+    id: "certificat",
+    label: "Certification",
+    icon: <Award className="w-5 h-5 md:w-6 md:h-6" />,
+    component: <Certificat />,
+  },
+  {
+    id: "tools",
+    label: "Tools",
+    icon: <Wrench className="w-5 h-5 md:w-6 md:h-6" />,
+    component: <Tools />,
+  },
+  {
+    id: "skills",
+    label: "Skills",
+    icon: <Sparkles className="w-5 h-5 md:w-6 md:h-6" />,
+    component: <Skills />,
+  },
 ];
-
 export default function Page() {
   const [activeTab, setActiveTab] = useState("experience");
   const [direction, setDirection] = useState(0);
@@ -43,9 +74,9 @@ export default function Page() {
   const activeComponent = tabs.find((t) => t.id === activeTab)?.component;
 
   return (
-    <div className="p-6 m-24">
-      <div className="mx-auto p-6 mb-16 md:mb-6">
-        <h2 className="text-4xl md:text-6xl text-center md:mb-6 mb-10">
+    <div className="p-6 mt-20 flex flex-col items-center justify-center md:mt-[6%]">
+      <div className="mx-auto p-6 mb-5 md:mb-6">
+        <h2 className="text-4xl md:text-6xl text-center md:mb-6 mb-5">
           Why <span className="text-[#7cf03d]">hire me</span> ?
         </h2>
         <p className="text-sm md:text-lg text-center">
@@ -61,19 +92,20 @@ export default function Page() {
       >
         <TabsList
           className="
-            grid grid-cols-2 gap-2 
-            md:flex md:justify-center md:gap-4 mb-4
-          "
+          grid grid-cols-2 gap-2 
+          md:flex md:justify-center md:gap-4 mb-4
+        "
         >
           {tabs.map((tab) => (
             <TabsTrigger
               key={tab.id}
               value={tab.id}
-              className="transition text-base md:text-2xl px-4 py-3 md:px-10 md:py-2 cursor-pointer 
-              data-[state=active]:text-[#7cf03d] 
-              rounded hover:border-[#7cf03d] duration-500 
-              hover:bg-[#7cf03d] hover:text-[#1f242d] hover:shadow-[0_0_10px_#7cf03d]"
+              className="flex items-center gap-2 transition text-base md:text-2xl px-4 py-3 md:px-10 md:py-2 cursor-pointer 
+            data-[state=active]:text-[#7cf03d] 
+            rounded hover:border-[#7cf03d] duration-500 
+            hover:bg-[#7cf03d] hover:text-[#1f242d] hover:shadow-[0_0_10px_#7cf03d]"
             >
+              {tab.icon}
               {tab.label}
             </TabsTrigger>
           ))}

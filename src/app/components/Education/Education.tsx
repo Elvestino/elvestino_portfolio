@@ -61,7 +61,7 @@ export default function Education() {
   };
 
   return (
-    <section className="education py-12">
+    <section className="px-4 sm:px-6 lg:px-12 py-8 max-md:mx-5">
       <h2 className="text-4xl font-bold text-center mb-12 text-white">
         My <span className="text-[#7cf03d]">Education</span>
       </h2>
@@ -112,7 +112,7 @@ export default function Education() {
           <IoIosArrowForward />
         </button>
 
-        <div className="overflow-hidden">
+        <div className="overflow-hidden ">
           <div
             className="flex transition-transform duration-300 gap-4"
             style={{ transform: `translateX(-${currentIndex * 100}%)` }}
@@ -122,7 +122,7 @@ export default function Education() {
               return (
                 <div
                   key={index}
-                  className="flex-shrink-0 w-[94%] mx-auto bg-[#22222c] text-white rounded-xl p-6 shadow-lg "
+                  className="flex-shrink-0 max-md:w-[95%] mx-auto bg-[#22222c] text-white rounded-xl p-6 shadow-lg "
                 >
                   <div className="flex items-center justify-center gap-2">
                     <Icon className="text-[#7cf03d] text-5xl" />

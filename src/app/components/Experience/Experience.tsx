@@ -39,7 +39,7 @@ export default function Experience() {
   ];
 
   return (
-    <section className="px-4 sm:px-6 lg:px-12 py-8">
+    <section className="px-4 sm:px-6 lg:px-12 py-8 max-md:mx-5">
       <h2 className="text-2xl sm:text-3xl font-bold mb-6 text-center text-[#7cf03d]">
         My <span className="text-white">Experience</span>
       </h2>
