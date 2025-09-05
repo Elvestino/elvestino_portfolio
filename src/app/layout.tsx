@@ -11,9 +11,9 @@ export const metadata: Metadata = {
     template: "%s | Elvestino",
   },
   icons: {
-    icon: "/logo.ico",
-    shortcut: "/logo.ico",
-    apple: "/logo.ico",
+    icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
+    apple: "/favicon.ico",
   },
   description:
     "Rejoignez l'Elvestino, une communauté d'entrepreneurs et de traders passionnés",
