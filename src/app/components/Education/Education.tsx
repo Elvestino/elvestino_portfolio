@@ -86,7 +86,11 @@ export default function Education() {
               {edu.school && (
                 <p className="text-gray-400 font-bold mb-2">{edu.school}</p>
               )}
-              <p className="text-base font-medium">Years : {edu.description}</p>
+              <p className="text-base font-medium ">
+                {" "}
+                <span className="text-[#7cf03d]">Years :</span>{" "}
+                {edu.description}
+              </p>
             </div>
           );
         })}
@@ -130,7 +134,8 @@ export default function Education() {
                     <p className="text-gray-400 font-bold mb-2">{edu.school}</p>
                   )}
                   <p className="text-base font-medium">
-                    <span className="italic"> Years :</span> {edu.description}
+                    <span className="italic text-[#7cf03d]"> Years :</span>{" "}
+                    {edu.description}
                   </p>
                 </div>
               );

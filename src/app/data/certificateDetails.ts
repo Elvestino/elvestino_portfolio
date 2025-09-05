@@ -6,7 +6,7 @@ const certificateDetails = [
       "/assets/img/certification/Idea_BI_1.png",
     ],
     description:
-      "Description détaillée de ce certificat Power BI avec IA. lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      "Le cours etait enrichissant, ou on avait appris les bases de power BI, depuis la importation d'une donnee, la collection et la transformation de donnees dans Power Query, la modelisation, l'analysation, la visualisation et le partage dans Power BI desktop et service avec IDEA Academy et quelques petites notions simples d'Intelligence Artificielle, pendant son passage a l'ENI Fianarantsoa  ",
     link: "https://www.facebook.com/IDEAAcademyDataTraining",
   },
   {
@@ -21,7 +21,7 @@ const certificateDetails = [
       "/assets/img/certification/cours_dhis2_1.png",
     ],
     description:
-      "Description détaillée de la certification DHIS2. lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      "La DHIS2 est une plateforme pour apprendre le cours de medecine, concernant la sante, le cours se divise en plusieurs modules avec des tests pour etre certifiee",
     link: "https://academy.dhis2.org/",
   },
 ];

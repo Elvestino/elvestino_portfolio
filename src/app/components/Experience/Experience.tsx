@@ -15,25 +15,26 @@ export default function Experience() {
   };
   const experiences = [
     {
-      title: "Développeur Frontend",
-      company: "XYZ",
-      year: "2022 - Présent",
-      description:
-        "Développement d’interfaces modernes et optimisées pour l’expérience utilisateur.",
-    },
-    {
-      title: "Stage Data Analyst",
-      company: "ABC",
-      year: "2021",
+      title: "Formation Data Analyst",
+      company: "IDEA Academy",
+      year: "2025",
       description:
         "Analyse de données et création de rapports interactifs avec Power BI.",
     },
     {
-      title: "Bénévole IT",
-      company: "Association Jeunes Devs",
-      year: "2020",
+      title: "Stage Developpeur FrontEnd",
+      company:
+        "Ecole de Management et d'Innovation Technologique (EMIT - Fianarantsoa)",
+      year: "2024",
       description:
-        "Support technique et organisation d’ateliers pour jeunes développeurs.",
+        "Integration de l'interface graphique de gestion de consultation au sein du CHU Tambohobe Fianarantsoa",
+    },
+    {
+      title: "Stage Developpeur Java",
+      company: "Service Regional du Budget (SRB - Ihorombe)",
+      year: "2023",
+      description:
+        "Conception et realisation du gestion de comptabilite des materiels au sein du SRB Ihorombe",
     },
   ];
 
@@ -44,7 +45,7 @@ export default function Experience() {
       </h2>
       {/* Desktop / Tablet Grid */}
       <div className="hidden sm:grid max-w-6xl mx-auto grid-cols-2 lg:grid-cols-3 gap-6">
-        {experiences.map((edu, index) => {
+        {experiences.map((exp, index) => {
           return (
             <div
               key={index}
@@ -52,17 +53,21 @@ export default function Experience() {
                transition-all duration-300 transform
              hover:scale-105 hover:-translate-y-2 hover:shadow-[#7cf03d]/50"
             >
-              <div className="flex justify-center items-center gap-2 mb-4">
+              <div className="text-center mb-4">
                 <h3 className="text-xl font-semibold mb-2 text-[#7cf03d]">
-                  {edu.title}
+                  {exp.title}
                 </h3>
+                <p className="text-gray-400 text-center">{exp.company}</p>
               </div>
-              {edu.description && (
-                <p className="text-gray-400 font-bold mb-2">
-                  {edu.description}
+              {exp.description && (
+                <p className="text-gray-400 font-bold mb-2 text-justify">
+                  {exp.description}
                 </p>
               )}
-              <p className="text-base font-medium">Years : {edu.year}</p>
+              <p className="text-base font-medium">
+                <span className="italic text-[#7cf03d]">Years :</span>{" "}
+                {exp.year}
+              </p>
             </div>
           );
         })}
@@ -89,24 +94,28 @@ export default function Experience() {
             className="flex transition-transform duration-300 gap-4"
             style={{ transform: `translateX(-${currentIndex * 100}%)` }}
           >
-            {experiences.map((edu, index) => {
+            {experiences.map((exp, index) => {
               return (
                 <div
                   key={index}
                   className="flex-shrink-0 w-[94%] mx-auto bg-[#22222c] text-white rounded-xl p-6 shadow-lg "
                 >
-                  <div className="flex items-center justify-center gap-2">
+                  <div className="text-center mb-2">
                     <h3 className="text-xl font-semibold mb-2 text-[#7cf03d]">
-                      {edu.title}
+                      {exp.title}
                     </h3>
+                    <p className="text-gray-400 text-xs text-center">
+                      {exp.company}
+                    </p>
                   </div>
-                  {edu.description && (
-                    <p className="text-gray-400 font-bold mb-2">
-                      {edu.description}
+                  {exp.description && (
+                    <p className="text-gray-400 text-[15px] font-bold mb-2">
+                      {exp.description}
                     </p>
                   )}
                   <p className="text-base font-medium">
-                    <span className="italic"> Years :</span> {edu.year}
+                    <span className="italic text-[#7cf03d]"> Years :</span>{" "}
+                    {exp.year}
                   </p>
                 </div>
               );

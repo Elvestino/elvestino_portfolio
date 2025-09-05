@@ -1,15 +1,15 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useState } from "react";
-import SkillModal from "./SkillModal";
-import Figma from "./components/Figma";
-import ReactJS from "./components/ReactJs";
-import Next from "./components/NextJS";
-import Python from "./components/Python";
-import TailwindCSS from "./components/Tailwind";
-import NodeJS from "./components/Node";
+import { useEffect } from "react";
 import { FaGamepad, FaFilm, FaMusic, FaBasketballBall } from "react-icons/fa";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "../ui/tooltip";
+import { motion } from "framer-motion";
 
 // Déclarer les interests
 const interests = [
@@ -20,34 +20,39 @@ const interests = [
 ];
 const skills = [
   {
+    name: "HTML",
+    img: "/assets/img/html.svg",
+    percent: 80,
+  },
+  {
+    name: "Javascript",
+    img: "/assets/img/javascript.svg",
+    percent: 60,
+  },
+  {
     name: "NextJS",
     img: "/assets/img/next-js.svg",
-    component: <Next />,
+    percent: 70,
   },
   {
     name: "Python",
     img: "/assets/img/python-5.svg",
-    component: <Python />,
+    percent: 40,
   },
   {
     name: "Tailwind CSS",
     img: "/assets/img/tailwind-css-2.svg",
-    component: <TailwindCSS />,
-  },
-  {
-    name: "NodeJS",
-    img: "/assets/img/nodejs-1.svg",
-    component: <NodeJS />,
+    percent: 70,
   },
   {
     name: "Figma",
     img: "/assets/img/figma-icon.svg",
-    component: <Figma />,
+    percent: 75,
   },
   {
     name: "ReactJS",
     img: "/assets/img/react-2.svg",
-    component: <ReactJS />,
+    percent: 60,
   },
 ];
 
@@ -55,24 +60,10 @@ const circles = [
   { label: "Creativity", percent: 60 },
   { label: "Communication", percent: 90 },
   { label: "Problem Solving", percent: 50 },
-  { label: "Teamwork", percent: 85 },
+  { label: "Teamwork", percent: 80 },
 ];
 
 export default function Skills() {
-  const [selectedSkill, setSelectedSkill] = useState<(typeof skills)[0] | null>(
-    null
-  );
-  const [modalOpen, setModalOpen] = useState(false);
-
-  const openModal = (skill: (typeof skills)[0]) => {
-    setSelectedSkill(skill);
-    setModalOpen(true);
-  };
-
-  const closeModal = () => {
-    setModalOpen(false);
-    setTimeout(() => setSelectedSkill(null), 800); // reset après animation
-  };
   useEffect(() => {
     // animation conic-gradient dynamique
     circles.forEach((c, i) => {
@@ -105,36 +96,64 @@ export default function Skills() {
         {/* Hard Skills */}
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 sm:gap-6 max-w-6xl mx-auto">
           {skills.map((skill, index) => (
-            <div
-              key={index}
-              className="p-4 sm:p-6 border border-[#7cf03d] rounded-xl flex flex-col items-center gap-3 cursor-pointer hover:scale-105 hover:shadow-[0_0_15px_#7cf03d] transition duration-300"
-              onClick={() => openModal(skill)}
-            >
-              <div className="flex items-center justify-center w-[50px] h-[50px] sm:w-[60px] sm:h-[60px]">
-                <Image
-                  src={skill.img}
-                  alt={skill.name}
-                  width={50}
-                  height={50}
-                  className="object-contain"
-                />
-              </div>
-              <span className="text-sm sm:text-lg text-white font-medium text-center mt-2">
-                {skill.name}
-              </span>
-            </div>
+            <TooltipProvider key={index}>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <div className="p-4 sm:p-6 border border-[#7cf03d] rounded-xl flex flex-col items-center gap-3 cursor-pointer hover:scale-105 hover:shadow-[0_0_15px_#7cf03d] transition duration-300">
+                    <div className="flex items-center justify-center w-[50px] h-[50px] sm:w-[60px] sm:h-[60px]">
+                      <Image
+                        src={skill.img}
+                        alt={skill.name}
+                        width={50}
+                        height={50}
+                        className="object-contain"
+                      />
+                    </div>
+                    <span className="text-sm sm:text-lg text-white font-medium text-center mt-2">
+                      {skill.name}
+                    </span>
+                  </div>
+                </TooltipTrigger>
+
+                <TooltipContent
+                  side="top"
+                  className="bg-[#1f242d] text-white border border-[#7cf03d] p-3 rounded-lg"
+                >
+                  <div className="w-40">
+                    <p className="mb-2 text-lg text-center font-medium">
+                      Mastery
+                    </p>
+
+                    <p className="mb-2 text-sm text-center font-medium">
+                      {skill.name} – {skill.percent}%
+                    </p>
+
+                    {/* Barre de progression avec glow */}
+                    <div className="relative w-full h-2 bg-gray-700 rounded-full overflow-hidden">
+                      {/* Glow animé */}
+                      <motion.div
+                        initial={{ width: 0, opacity: 0.4 }}
+                        animate={{ width: `${skill.percent}%`, opacity: 1 }}
+                        transition={{ duration: 1.2, ease: "easeOut" }}
+                        className="absolute top-0 left-0 h-full bg-[#7cf03d] blur-md"
+                      />
+                      {/* Barre principale */}
+                      <motion.div
+                        initial={{ width: 0 }}
+                        animate={{ width: `${skill.percent}%` }}
+                        transition={{ duration: 1.2, ease: "easeOut" }}
+                        className="relative h-full bg-[#7cf03d]"
+                      />
+                    </div>
+                  </div>
+                </TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
           ))}
         </div>
 
-        {/* Modal */}
-        <SkillModal
-          skill={selectedSkill}
-          isOpen={modalOpen}
-          onClose={closeModal}
-        />
-
         {/* Soft Skills */}
-        <div className="grid grid-cols-2 gap-6 sm:gap-12 place-items-center">
+        <div className="grid grid-cols-2 gap-6  place-items-center">
           {circles.map((circle, i) => (
             <div
               key={i}

@@ -17,7 +17,7 @@ const aurum: ProjectType[] = [
     ],
     year: 2025,
     month: 6,
-    statusCompleted: true,
+    statusCompleted: false,
     description: "Projet Aurum cartel",
     technology: ["NextJS", "Socket.io", "TailwindCss"],
     nbrContribuate: 4,
@@ -149,13 +149,49 @@ const portfolio: ProjectType[] = [
     type: "professionnal",
   },
 ];
+const hymne: ProjectType[] = [
+  {
+    title: "Hymne EMIT",
+    images: [
+      "/assets/img/emit_chant/hymne1.png",
+      "/assets/img/emit_chant/hymne2.png",
+      "/assets/img/emit_chant/hymne3.png",
+    ],
+    year: 2025,
+    month: 6,
+    statusCompleted: true,
+    description: "Projet pour le concours pour la l'hymne de l'EMIT",
+    technology: [
+      "NextJS",
+      "Socket.io",
+      "TailwindCss",
+      "ExpressJS",
+      "PostgreSQL",
+      "ChartJS",
+      "React-Icons",
+      "Framer-Motion",
+      "SweetAlert2",
+    ],
+    nbrContribuate: 2,
+    github: false,
+    key: [
+      "Authentification",
+      "Gestion d'utilisateur",
+      "Compte a rebour",
+      "Ajout d'administrateur",
+      "Affichage moyenne des participants",
+    ],
+    type: "professionnal",
+  },
+];
 
 const allProjects: ProjectType[] = [
+  ...portfolio,
+  ...hymne,
   ...aurum,
   ...biblio,
   ...consultation,
   ...emit_project,
-  ...portfolio,
 ];
 
 // Catégories
@@ -261,7 +297,7 @@ export default function Page() {
             style={{ transform: `translateX(-${currentIndex * 100}%)` }}
           >
             {currentCategory.projects.map((project, index) => (
-              <div key={index} className="flex-shrink-0 w-[94%] mx-auto">
+              <div key={index} className="flex-shrink-0 w-[95%] mx-auto">
                 <ProjectCard key={index} project={project} />
               </div>
             ))}

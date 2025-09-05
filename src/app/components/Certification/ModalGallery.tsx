@@ -147,7 +147,7 @@ export default function ModalGallery({
               ))}
             </div>
 
-            <div className="flex justify-between items-center gap-32">
+            <div className="flex justify-between items-center gap-4 md:gap-10">
               <p className="text-gray-300 mb-2 text-justify">
                 {showFullDescription
                   ? description
