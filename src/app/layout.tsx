@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import Header from "./components/Header";
 import ParticlesBackground from "./components/particles/ParticlesBackground";
 import PageTransition from "./components/PageTransition";
 import StarTransition from "./components/StarTransition";
+import Header from "./components/header/Header";
 
 export const metadata: Metadata = {
   title: {

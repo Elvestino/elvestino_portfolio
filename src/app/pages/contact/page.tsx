@@ -29,9 +29,9 @@ export default function Page() {
   };
 
   return (
-    <section className="min-h-screen flex justify-center items-center py-16 px-8 max-md:px-4 text-white">
+    <section className="min-h-screen flex justify-center items-center max-md:py-28 px-8 max-md:px-5 text-white">
       <div className="max-w-6xl w-full flex flex-wrap justify-center items-center gap-12 max-md:gap-6">
-        <h2 className="w-full text-4xl font-bold text-center mb-12 max-md:text-3xl">
+        <h2 className="w-full text-4xl font-bold text-center mb-5 max-md:text-3xl">
           How Contact <span className="text-[#7cf03d]">Me</span>
         </h2>
 
