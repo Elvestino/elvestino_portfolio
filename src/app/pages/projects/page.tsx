@@ -1,9 +1,10 @@
 "use client";
-import { useState } from "react";
+import { ReactNode, useState } from "react";
 import ProjectCard from "@/app/components/ProjectCard";
 
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { ProjectType } from "@/app/models/projectType";
+import { Layers, CheckCircle, Briefcase, BookOpen } from "lucide-react";
 
 // Exemple de données
 const aurum: ProjectType[] = [
@@ -195,22 +196,30 @@ const allProjects: ProjectType[] = [
 ];
 
 // Catégories
-const categories: { title: string; projects: ProjectType[] }[] = [
+const categories: {
+  title: string;
+  projects: ProjectType[];
+  icon: ReactNode;
+}[] = [
   {
     title: "All",
     projects: allProjects,
+    icon: <Layers />,
   },
   {
     title: "Completed",
     projects: allProjects.filter((p) => p.statusCompleted),
+    icon: <CheckCircle />,
   },
   {
     title: "Professional Project",
     projects: allProjects.filter((p) => p.type === "professionnal"),
+    icon: <Briefcase />,
   },
   {
     title: "Academic Project",
     projects: allProjects.filter((p) => p.type === "academic"),
+    icon: <BookOpen />,
   },
 ];
 
@@ -234,9 +243,9 @@ export default function Page() {
     categories.find((cat) => cat.title === activeTab) || categories[0];
 
   return (
-    <div className="p-6 m-16">
-      <div className="mx-auto p-6 mb-16 md:mb-6">
-        <h2 className="text-4xl md:text-6xl text-center md:mb-6 mb-10">
+    <div className="px-4 sm:px-6 lg:px-12 py-8 max-md:mx-5 max-md:my-8">
+      <div className="mx-auto p-6 mb-5 md:mb-6">
+        <h2 className="text-4xl md:text-6xl text-center md:mb-6 mb-5">
           My <span className="text-[#7cf03d]">Projects</span>
         </h2>
         <p className="text-sm md:text-lg text-center">
@@ -245,38 +254,41 @@ export default function Page() {
       </div>
 
       {/* ---------------- Tabs ---------------- */}
-      <div className="flex flex-wrap justify-center gap-3 mb-8">
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-7 gap-3 mb-8 max-md:grid max-md:grid-cols-2 max-md:gap-4">
         {categories.map((cat, index) => (
           <button
             key={index}
             onClick={() => setActiveTab(cat.title)}
             className={`
-              cursor-pointer rounded-md
-              text-xs px-5 py-2            
-              md:text-lg md:px-10 md:py-2  
-              hover:border-[#7cf03d] duration-500 
-              hover:bg-[#7cf03d] hover:text-[#1f242d] hover:shadow-[0_0_10px_#7cf03d]
-              ${
-                activeTab === cat.title
-                  ? "bg-[#7cf03d] text-[#101828]"
-                  : "bg-[#22222c] text-white hover:bg-[#7cf03d]"
-              }
+           flex items-center justify-center gap-2 max-md:gap-3 max-md:px-3 max-md:py-3
+        rounded-md cursor-pointer
+        text-xs md:text-lg font-medium
+        px-2 py-1 md:px-3 md:py-2
+        duration-500 ${
+          activeTab === cat.title
+            ? "bg-[#7cf03d] text-[#101828] shadow-[0_0_10px_#7cf03d]"
+            : "bg-[#22222c] text-white hover:bg-[#7cf03d] hover:text-[#1f242d] hover:shadow-[0_0_10px_#7cf03d]"
+        }
             `}
           >
-            {cat.title}
+            {" "}
+            {/* Icône */}
+            <span className="w-4 h-4 md:w-5 md:h-5">{cat.icon}</span>
+            {/* Titre */}
+            <span>{cat.title}</span>
           </button>
         ))}
       </div>
 
       {/* ---------------- Grille des projets version normal ---------------- */}
-      <div className="hidden sm:grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="hidden sm:grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-md:">
         {currentCategory.projects.map((project, idx) => (
           <ProjectCard key={idx} project={project} />
         ))}
       </div>
 
       {/*Grille des projets version Mobile Carousel */}
-      <div className="sm:hidden max-w-md mx-auto relative">
+      <div className="sm:hidden max-w-md mx-auto relative max-md:mx-4">
         {/* Flèches */}
         <button
           onClick={prevSlide}
@@ -297,7 +309,7 @@ export default function Page() {
             style={{ transform: `translateX(-${currentIndex * 100}%)` }}
           >
             {currentCategory.projects.map((project, index) => (
-              <div key={index} className="flex-shrink-0 w-[95%] mx-auto">
+              <div key={index} className="flex-shrink-0 max-md:w-[96%] mx-auto">
                 <ProjectCard key={index} project={project} />
               </div>
             ))}
