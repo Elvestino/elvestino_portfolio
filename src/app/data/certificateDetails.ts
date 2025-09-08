@@ -6,7 +6,7 @@ const certificateDetails = [
       "/assets/img/certification/Idea_BI_1.png",
     ],
     description:
-      "Le cours etait enrichissant, ou on avait appris les bases de power BI, depuis la importation d'une donnee, la collection et la transformation de donnees dans Power Query, la modelisation, l'analysation, la visualisation et le partage dans Power BI desktop et service avec IDEA Academy et quelques petites notions simples d'Intelligence Artificielle, pendant son passage a l'ENI Fianarantsoa  ",
+      "The course was enriching, where we learned the basics of Power BI, from importing data, collecting and transforming data in Power Query, modeling, analysis, visualization and sharing in Power BI desktop and service with IDEA Academy and some simple notions of Artificial Intelligence, during our time at ENI Fianarantsoa",
     link: "https://www.facebook.com/IDEAAcademyDataTraining",
   },
   {
@@ -21,7 +21,7 @@ const certificateDetails = [
       "/assets/img/certification/cours_dhis2_1.png",
     ],
     description:
-      "La DHIS2 est une plateforme pour apprendre le cours de medecine, concernant la sante, le cours se divise en plusieurs modules avec des tests pour etre certifiee",
+      "DHIS2 is a platform for learning the medical course, concerning health, the course is divided into several modules with tests to be certified",
     link: "https://academy.dhis2.org/",
   },
 ];

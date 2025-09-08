@@ -6,19 +6,21 @@ import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 
 interface HeaderMobileProps {
-  pathname: string;
   navigation: { name: string; href: string }[];
   isMenuOpen: boolean;
   setIsMenuOpen: (open: boolean) => void;
   onHomeClick: () => void;
+  onLinkClick: (href: string) => void;
+  activeSection: string;
 }
 
 export default function HeaderMobile({
-  pathname,
   navigation,
   isMenuOpen,
   setIsMenuOpen,
   onHomeClick,
+  onLinkClick,
+  activeSection,
 }: HeaderMobileProps) {
   const [isScrolled, setIsScrolled] = useState(false);
 
@@ -94,7 +96,7 @@ export default function HeaderMobile({
         </button>
 
         <div className="flex flex-col h-full justify-between items-center p-6 pt-16 max-md:flex max-md:flex-col max-md:h-full max-md:justify-between max-md:items-center max-md:p-6 max-md:pt-16">
-          <div className="flex flex-col items-center space-y-3 max-md:flex max-md:flex-col max-md:items-center max-md:space-y-3">
+          <div className="flex flex-col items-center space-y-6 max-md:flex max-md:flex-col max-md:items-center max-md:space-y-6">
             <Image
               src={"/assets/Logo_2.png"}
               alt="logo"
@@ -106,12 +108,16 @@ export default function HeaderMobile({
               <Link
                 key={item.name}
                 href={item.href}
-                className={`block text-lg font-medium max-md:block max-md:text-lg max-md:font-medium ${
-                  pathname === item.href
-                    ? "text-[#7cf03d] font-bold max-md:text-[#7cf03d] max-md:font-bold"
-                    : "text-white hover:text-[#7cf03d] max-md:text-white max-md:hover:text-[#7cf03d]"
+                onClick={(e) => {
+                  e.preventDefault();
+                  onLinkClick(item.href);
+                  setIsMenuOpen(false);
+                }}
+                className={`block text-lg font-medium ${
+                  activeSection === item.href
+                    ? "text-[#7cf03d] font-bold"
+                    : "text-white hover:text-[#7cf03d]"
                 }`}
-                onClick={() => setIsMenuOpen(false)}
               >
                 {item.name}
               </Link>

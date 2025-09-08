@@ -1,41 +1,65 @@
 "use client";
 
-import { usePathname, useRouter } from "next/navigation";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import HeaderDesktop from "./HeaderDesktop";
 import HeaderMobile from "./HeaderMobile";
 
 export default function Header() {
-  const pathname = usePathname();
-  const router = useRouter();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("#home");
 
   const navigation = [
-    { name: "Home", href: "/" },
-    { name: "About me", href: "/pages/about" },
-    { name: "Resume", href: "/pages/resume" },
-    { name: "Projects", href: "/pages/projects" },
-    { name: "Contact", href: "/pages/contact" },
+    { name: "Home", href: "#home" },
+    { name: "About me", href: "#about" },
+    { name: "Resume", href: "#resume" },
+    { name: "Projects", href: "#projects" },
+    { name: "Contact", href: "#contact" },
   ];
 
-  const handleHomeClick = () => router.push("/");
+  const handleScroll = (href: string) => {
+    const target = document.querySelector(href);
+    if (target) target.scrollIntoView({ behavior: "smooth" });
+  };
+
+  const handleHomeClick = () => handleScroll("#home");
+
+  // IntersectionObserver pour activeSection (côté client uniquement)
+  useEffect(() => {
+    const sections = document.querySelectorAll("section[id]");
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(`#${entry.target.id}`);
+          }
+        });
+      },
+      { root: null, rootMargin: "0px", threshold: 0.6 }
+    );
+
+    sections.forEach((section) => observer.observe(section));
+    return () => sections.forEach((section) => observer.unobserve(section));
+  }, []);
 
   return (
     <>
       <div className="hidden md:block">
         <HeaderDesktop
-          pathname={pathname}
           navigation={navigation}
           onHomeClick={handleHomeClick}
+          onLinkClick={handleScroll}
+          activeSection={activeSection}
         />
       </div>
+
       <div className="block md:hidden">
         <HeaderMobile
-          pathname={pathname}
           navigation={navigation}
           isMenuOpen={isMenuOpen}
           setIsMenuOpen={setIsMenuOpen}
           onHomeClick={handleHomeClick}
+          onLinkClick={handleScroll}
+          activeSection={activeSection}
         />
       </div>
     </>

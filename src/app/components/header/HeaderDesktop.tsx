@@ -4,15 +4,17 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 
 interface HeaderDesktopProps {
-  pathname: string;
   navigation: { name: string; href: string }[];
   onHomeClick: () => void;
+  onLinkClick: (href: string) => void;
+  activeSection: string;
 }
 
 export default function HeaderDesktop({
-  pathname,
   navigation,
   onHomeClick,
+  onLinkClick,
+  activeSection,
 }: HeaderDesktopProps) {
   const [isScrolled, setIsScrolled] = useState(false);
 
@@ -44,8 +46,12 @@ export default function HeaderDesktop({
             <Link
               key={item.name}
               href={item.href}
+              onClick={(e) => {
+                e.preventDefault();
+                onLinkClick(item.href);
+              }}
               className={`text-lg font-medium transition-colors ${
-                pathname === item.href
+                activeSection === item.href
                   ? "text-[#7cf03d] font-extrabold"
                   : "text-white hover:text-[#7cf03d]"
               }`}

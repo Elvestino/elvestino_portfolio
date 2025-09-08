@@ -19,17 +19,17 @@ const aurum: ProjectType[] = [
     year: 2025,
     month: 6,
     statusCompleted: false,
-    description: "Projet Aurum cartel",
+    description: "Aurum Cartel Project",
     technology: ["NextJS", "Socket.io", "TailwindCss"],
     nbrContribuate: 4,
     github: false,
-    key: ["Authentification", "Gestion de messages"],
-    type: "professionnal",
+    key: ["Authentication", "Message management"],
+    type: "professional",
   },
 ];
 const emit_project: ProjectType[] = [
   {
-    title: "Projet EMIT",
+    title: "EMIT Project",
     images: [
       "/assets/img/projet_emit/emit1.png",
       "/assets/img/projet_emit/emit2.png",
@@ -40,22 +40,18 @@ const emit_project: ProjectType[] = [
     year: 2025,
     month: 1,
     statusCompleted: true,
-    description: "Application de gestion des élèves au sein de l'EMIT",
+    description: "Student management application within EMIT",
     technology: ["AngularJS", "UUID", "Scss", "SweetAlert2"],
     nbrContribuate: 1,
-    github: "https://github.com/Elvestino/EmitProjet",
-    key: [
-      "Ajout d'un eleve",
-      "Modification d'un eleve",
-      "Suppresion d'un eleve",
-    ],
+    github: "https://github.com/Elvestino/EmitProject",
+    key: ["Adding a student", "Modifying a student", "Deleting a student"],
     type: "academic",
   },
 ];
 const biblio: ProjectType[] = [
   {
     title: "Biblio",
-    description: "Gestion de bibliotheque",
+    description: "Library Management",
     images: [
       "/assets/img/biblio_angular/biblio1.png",
       "/assets/img/biblio_angular/biblio2.png",
@@ -76,15 +72,15 @@ const biblio: ProjectType[] = [
     nbrContribuate: 1,
     technology: ["AngularJs", "Scss"],
     github: "https://github.com/Elvestino/biblio-frontend",
-    key: ["Gestion de retour", " Gestion d'Emprunt Livre", "Authentification"],
+    key: ["Return Management", "Book Borrowing Management", "Authentication"],
     type: "academic",
   },
 ];
 const consultation: ProjectType[] = [
   {
-    title: "Gestion de consultation",
+    title: "Consultation Management",
     description:
-      "Intégration de l'interface graphique du gestion de consultation au sein du CHU Tambohobe",
+      "Integration of the Consultation Management GUI within Tambohobe University Hospital",
     images: [
       "/assets/img/consultation/consultation1.png",
       "/assets/img/consultation/consultation2.png",
@@ -116,16 +112,16 @@ const consultation: ProjectType[] = [
     technology: ["NextJS", "TailwindCss", "SweetAlert2", "Json-Server"],
     github: false,
     key: [
-      "Ajout de patient",
-      " Consultation du patient",
-      "Archive du patient",
-      "Ordonnance",
-      "Arret de Travail",
-      "Certificat Medical",
-      "Archive Consultation",
-      "Lettre d'orientation",
+      "Add Patient",
+      "Patient Consultation",
+      "Patient Archive",
+      "Prescription",
+      "Sick Leave",
+      "Medical Certificate",
+      "Consultation Archive",
+      "Referral Letter",
     ],
-    type: "professionnal",
+    type: "professional",
   },
 ];
 const portfolio: ProjectType[] = [
@@ -146,8 +142,9 @@ const portfolio: ProjectType[] = [
     ],
     nbrContribuate: 1,
     github: false,
+
     key: ["Responsive Design", "Animation", "SEO"],
-    type: "professionnal",
+    type: "professional",
   },
 ];
 const hymne: ProjectType[] = [
@@ -161,7 +158,7 @@ const hymne: ProjectType[] = [
     year: 2025,
     month: 6,
     statusCompleted: true,
-    description: "Projet pour le concours pour la l'hymne de l'EMIT",
+    description: "Project for the EMIT anthem competition",
     technology: [
       "NextJS",
       "Socket.io",
@@ -176,13 +173,13 @@ const hymne: ProjectType[] = [
     nbrContribuate: 2,
     github: false,
     key: [
-      "Authentification",
-      "Gestion d'utilisateur",
-      "Compte a rebour",
-      "Ajout d'administrateur",
-      "Affichage moyenne des participants",
+      "Authentication",
+      "User Management",
+      "Countdown",
+      "Add Administrator",
+      "Average Attendee Display",
     ],
-    type: "professionnal",
+    type: "professional",
   },
 ];
 
@@ -213,7 +210,7 @@ const categories: {
   },
   {
     title: "Professional Project",
-    projects: allProjects.filter((p) => p.type === "professionnal"),
+    projects: allProjects.filter((p) => p.type === "professional"),
     icon: <Briefcase />,
   },
   {
@@ -223,7 +220,7 @@ const categories: {
   },
 ];
 
-export default function Page() {
+export default function ProjectsSection() {
   const [activeTab, setActiveTab] = useState("All");
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -243,7 +240,7 @@ export default function Page() {
     categories.find((cat) => cat.title === activeTab) || categories[0];
 
   return (
-    <div className="px-4 sm:px-6 lg:px-12 py-8 max-md:mx-5 max-md:my-8">
+    <div className="px-4 sm:px-6 lg:px-12  max-md:mx-5 max-md:my-3">
       <div className="mx-auto p-6 mb-5 md:mb-6">
         <h2 className="text-4xl md:text-6xl text-center md:mb-6 mb-5">
           My <span className="text-[#7cf03d]">Projects</span>
@@ -254,13 +251,13 @@ export default function Page() {
       </div>
 
       {/* ---------------- Tabs ---------------- */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-7 gap-3 mb-8 max-md:grid max-md:grid-cols-2 max-md:gap-4">
+      <div className="flex flex-wrap justify-center gap-4 mb-8 max-md:gap-4">
         {categories.map((cat, index) => (
           <button
             key={index}
             onClick={() => setActiveTab(cat.title)}
             className={`
-           flex items-center justify-center gap-2 max-md:gap-3 max-md:px-3 max-md:py-3
+        flex items-center justify-center gap-2 max-md:gap-3 max-md:px-3 max-md:py-3
         rounded-md cursor-pointer
         text-xs md:text-lg font-medium
         px-2 py-1 md:px-3 md:py-2
@@ -269,9 +266,8 @@ export default function Page() {
             ? "bg-[#7cf03d] text-[#101828] shadow-[0_0_10px_#7cf03d]"
             : "bg-[#22222c] text-white hover:bg-[#7cf03d] hover:text-[#1f242d] hover:shadow-[0_0_10px_#7cf03d]"
         }
-            `}
+      `}
           >
-            {" "}
             {/* Icône */}
             <span className="w-4 h-4 md:w-5 md:h-5">{cat.icon}</span>
             {/* Titre */}

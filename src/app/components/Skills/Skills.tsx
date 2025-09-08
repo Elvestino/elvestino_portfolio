@@ -33,7 +33,7 @@ const skills = [
   },
   {
     name: "NextJS",
-    img: "/assets/img/next-js.svg",
+    img: "/assets/img/nextjs.png",
     percent: 70,
   },
   {
@@ -48,7 +48,7 @@ const skills = [
   },
   {
     name: "Figma",
-    img: "/assets/img/figma-icon.svg",
+    img: "/assets/img/6388512-middle2.png",
     percent: 75,
   },
   {

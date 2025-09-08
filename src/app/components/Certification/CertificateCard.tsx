@@ -8,7 +8,7 @@ import CertificateModal from "./CertificateModal";
 type CertificateCardProps = {
   title: string;
   year: number;
-  status: "terminer" | "en cours";
+  status: "To end" | "In progress";
   images: string[];
   modalData: {
     images: string[];
@@ -77,12 +77,12 @@ export default function CertificateCard({
           <p className="text-xs sm:text-sm text-muted-foreground">{year}</p>
           <span
             className={`inline-block mt-2 px-2 py-1 text-xs font-semibold rounded w-fit ${
-              status === "terminer"
+              status === "To end"
                 ? "bg-green-500 text-white"
                 : "bg-yellow-500 text-black"
             }`}
           >
-            {status === "terminer" ? "Terminé" : "En cours"}
+            {status === "To end" ? "To end" : "In progress"}
           </span>
         </CardHeader>
 

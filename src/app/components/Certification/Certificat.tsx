@@ -47,7 +47,7 @@ export default function Certificates() {
             key={index}
             title={cert.title}
             year={cert.year}
-            status={cert.status ? "terminer" : "en cours"}
+            status={cert.status ? "To end" : "In progress"}
             images={cert.images}
             modalData={certificateDetails[index]}
             onOpenModal={() => openModal(cert, certificateDetails[index])} // <- fonction globale
@@ -82,7 +82,7 @@ export default function Certificates() {
                 <CertificateCard
                   title={cert.title}
                   year={cert.year}
-                  status={cert.status ? "terminer" : "en cours"}
+                  status={cert.status ? "To end" : "In progress"}
                   images={cert.images}
                   modalData={certificateDetails[index]}
                   onOpenModal={() => openModal(cert, certificateDetails[index])} // <- modal global mobile

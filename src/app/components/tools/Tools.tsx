@@ -25,26 +25,26 @@ import {
 const devTools = [
   {
     title: "Visual Studio Code",
-    description: "Mon éditeur de code principal",
+    description: "My main code editor",
     icon: TbBrandVscode,
   },
   {
     title: "Git",
-    description: "Système de contrôle de version",
+    description: "Version control system",
     icon: FaGitAlt,
   },
   {
     title: "GitHub",
-    description: "Hébergement de code et collaboration",
+    description: "Code hosting and collaboration",
     icon: FaGithub,
   },
-  { title: "Docker", description: "Containerisation", icon: FaDocker },
+  { title: "Docker", description: "Containerization", icon: FaDocker },
 ];
 
 const projectTools = [
   {
     title: "Trello",
-    description: "Gestion de projet et tâches",
+    description: "Project and task management",
     icon: FaTrello,
   },
 ];
@@ -53,41 +53,41 @@ const designTools = [
   { title: "Figma", description: "Design UI/UX", icon: FaFigma },
   {
     title: "Adobe XD",
-    description: "Design d'interfaces",
+    description: "Interface design",
     icon: SiAdobexd,
   },
 ];
 
 const dataTools = [
-  { title: "Python", description: "Langage de programmation", icon: SiPython },
+  { title: "Python", description: "Programming Language", icon: SiPython },
 
   {
     title: "MySQL",
-    description: "Base de données relationnelle",
+    description: "Relational Database",
     icon: SiMysql,
   },
   {
     title: "PostgreSQL",
-    description: "Base de données avancée",
+    description: "Advanced Database",
     icon: SiPostgresql,
   },
   {
     title: "Power BI",
-    description: "Outil de Business Intelligence",
+    description: "Business Intelligence Tool",
     icon: FaChartBar,
   },
   {
     title: "Excel",
-    description: "Analyse et reporting de données",
+    description: "Data Analysis and Reporting",
     icon: FaFileExcel,
   },
 ];
 
 const osTools = [
-  { title: "Windows", description: "Système d'exploitation", icon: FaWindows },
+  { title: "Windows", description: "Operating System", icon: FaWindows },
   {
     title: "Linux",
-    description: "Système d'exploitation open-source",
+    description: "Open-source Operating System",
     icon: FaLinux,
   },
 ];
@@ -182,7 +182,7 @@ export default function Tools() {
             >
               {/* Header : Icône + Titre */}
               <div className="flex items-center gap-2 mb-2 sm:mb-3">
-                <Icon className="w-6 h-6 sm:w-8 sm:h-8 text-[#7cf03d]" />
+                <Icon className="w-9 h-7 sm:w-8 sm:h-8 text-[#7cf03d]" />
                 <h4
                   className="text-sm sm:text-xl font-semibold text-[#7cf03d] 
                        group-hover:text-[#a6f77d] transition-colors duration-300"

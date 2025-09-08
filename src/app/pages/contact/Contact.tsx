@@ -4,7 +4,7 @@ import { AiOutlinePhone } from "react-icons/ai";
 import { GrMail } from "react-icons/gr";
 import { MdLocationOn } from "react-icons/md";
 
-export default function Page() {
+export default function ContactSection() {
   const handleSendMessage = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
@@ -29,7 +29,7 @@ export default function Page() {
   };
 
   return (
-    <section className="min-h-screen flex justify-center items-center max-md:py-28 px-8 max-md:px-5 text-white">
+    <section className="min-h-screen flex justify-center items-center max-md:py-3 px-8 max-md:px-5 text-white">
       <div className="max-w-6xl w-full flex flex-wrap justify-center items-center gap-12 max-md:gap-6">
         <h2 className="w-full text-4xl font-bold text-center mb-5 max-md:text-3xl">
           How Contact <span className="text-[#7cf03d]">Me</span>

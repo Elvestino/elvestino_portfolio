@@ -48,7 +48,7 @@ const tabs = [
     component: <Skills />,
   },
 ];
-export default function Page() {
+export default function ResumeSection() {
   const [activeTab, setActiveTab] = useState("experience");
   const [direction, setDirection] = useState(0);
 
@@ -74,7 +74,7 @@ export default function Page() {
   const activeComponent = tabs.find((t) => t.id === activeTab)?.component;
 
   return (
-    <div className="p-6 mt-20 flex flex-col items-center justify-center md:mt-[6%]">
+    <div className="p-6 flex flex-col items-center justify-center md:mt-3">
       <div className="mx-auto p-6 mb-5 md:mb-6">
         <h2 className="text-4xl md:text-6xl text-center md:mb-6 mb-5">
           Why <span className="text-[#7cf03d]">hire me</span> ?

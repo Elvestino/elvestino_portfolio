@@ -15,29 +15,27 @@ export default function Experience() {
   };
   const experiences = [
     {
-      title: "Formation Data Analyst",
+      title: "Data Analyst Training",
       company: "IDEA Academy",
       year: "2025",
-      description:
-        "Analyse de données et création de rapports interactifs avec Power BI.",
+      description: "Data analysis and interactive reporting with Power BI.",
     },
     {
-      title: "Stage Developpeur FrontEnd",
+      title: "Front-End Developer Internship",
       company:
-        "Ecole de Management et d'Innovation Technologique (EMIT - Fianarantsoa)",
+        "School of Management and Technological Innovation (EMIT - Fianarantsoa)",
       year: "2024",
       description:
-        "Integration de l'interface graphique de gestion de consultation au sein du CHU Tambohobe Fianarantsoa",
+        "Integration of the consultation management graphical interface within the Tambohobe University Hospital, Fianarantsoa",
     },
     {
-      title: "Stage Developpeur Java",
-      company: "Service Regional du Budget (SRB - Ihorombe)",
+      title: "Java Developer Internship",
+      company: "Regional Budget Service (SRB - Ihorombe)",
       year: "2023",
       description:
-        "Conception et realisation du gestion de comptabilite des materiels au sein du SRB Ihorombe",
+        "Design and implementation of material accounting management within the SRB, Ihorombe",
     },
   ];
-
   return (
     <section className="px-4 sm:px-6 lg:px-12 py-8 max-md:mx-5">
       <h2 className="text-2xl sm:text-3xl font-bold mb-6 text-center text-[#7cf03d]">

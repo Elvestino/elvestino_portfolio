@@ -4,6 +4,8 @@ import ParticlesBackground from "./components/particles/ParticlesBackground";
 import PageTransition from "./components/PageTransition";
 import StarTransition from "./components/StarTransition";
 import Header from "./components/header/Header";
+import Footer from "./components/Footer/Footer";
+import Arrow from "./components/Arrow";
 
 export const metadata: Metadata = {
   title: {
@@ -16,7 +18,7 @@ export const metadata: Metadata = {
     apple: "/favicon.ico",
   },
   description:
-    "Rejoignez l'Elvestino, une communauté d'entrepreneurs et de traders passionnés",
+    "Elvestino, Developpeur FrontEnd, spécialisé en NextJS, Designeur avec Figma et Analyseur de Données avec PowerBI Découvrez mes projets et compétences en développement web, designeur et data Analyst.",
   keywords: ["elvestino", "tsianoy karl elvestino dorelin", "dorelin"],
   authors: [{ name: "Elvestino" }],
   creator: "Elvestino",
@@ -34,30 +36,24 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className="antialiased min-h-screen flex flex-col bg-zinc-950 font-sans text-white"
+        className="antialiased min-h-screen flex flex-col bg-zinc-950 font-sans text-white overflow-x-hidden"
         style={{ margin: 0, padding: 0 }}
       >
         <Header />
+
         {/* Particles en arrière-plan */}
-        <div
-          style={{
-            position: "fixed",
-            top: 0,
-            left: 0,
-            width: "100%",
-            height: "100%",
-            zIndex: -1,
-          }}
-        >
+        <div className="fixed top-0 left-0 w-full h-full -z-10 overflow-hidden">
           <ParticlesBackground />
         </div>
 
         {/* Contenu principal */}
-        <main className="flex-1 relative isolate">
+        <main className="flex-1 relative isolate overflow-hidden">
           <StarTransition />
-          {/* <div className="relative w-full min-h-full z-10">{children}</div> */}
           <PageTransition>{children}</PageTransition>
+          <Arrow />
         </main>
+
+        <Footer />
       </body>
     </html>
   );

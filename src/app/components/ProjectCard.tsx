@@ -6,6 +6,7 @@ import { Card, CardHeader, CardTitle } from "@/app/components/ui/card";
 import { AiOutlineCalendar } from "react-icons/ai";
 import { FaGithub, FaUsers } from "react-icons/fa";
 import { ProjectType } from "../models/projectType";
+import { CheckCircle, Clock } from "lucide-react";
 
 export default function ProjectCard({ project }: { project: ProjectType }) {
   const [currentImage, setCurrentImage] = useState(0);
@@ -67,15 +68,26 @@ export default function ProjectCard({ project }: { project: ProjectType }) {
           {/* Status + Github */}
           <div className="flex flex-wrap justify-start gap-3 items-center">
             {/* Status */}
-            <span
-              className={`inline-block px-2 py-1 text-xs sm:text-sm font-semibold rounded ${
-                project.statusCompleted
-                  ? "bg-green-500 text-white"
-                  : "bg-yellow-500 text-black"
-              }`}
-            >
-              {project.statusCompleted ? "Completed" : "En cours"}
-            </span>
+            <div className="relative flex items-center gap-2 group">
+              {/* Cercle coloré */}
+              <span
+                className={`w-3 h-3 rounded-full ${
+                  project.statusCompleted ? "bg-green-500" : "bg-yellow-500"
+                }`}
+              ></span>
+
+              {/* Icône */}
+              {project.statusCompleted ? (
+                <CheckCircle className="text-green-500 w-4 h-4" />
+              ) : (
+                <Clock className="text-yellow-500 w-4 h-4" />
+              )}
+
+              {/* Tooltip */}
+              <span className="absolute bottom-full mb-2 hidden group-hover:block px-2 py-1 text-xs rounded bg-gray-800 text-white whitespace-nowrap shadow-lg">
+                {project.statusCompleted ? "Completed" : "In progress"}
+              </span>
+            </div>
 
             {/* Github */}
             {project.github ? (
@@ -91,12 +103,15 @@ export default function ProjectCard({ project }: { project: ProjectType }) {
                 </span>
               </a>
             ) : (
-              <div className="flex items-center gap-2 group border border-gray-600 px-2 py-1 rounded cursor-not-allowed hover:border-red-400 transition duration-300">
+              <button
+                disabled
+                className="flex items-center gap-2 border border-gray-600 px-2 py-1 rounded opacity-50 cursor-not-allowed"
+              >
                 <FaGithub className="text-gray-500 text-lg sm:text-xl" />
-                <span className="text-xs sm:text-sm text-red-400 font-bold">
+                <span className="text-xs sm:text-sm text-gray-400 font-bold">
                   Confidentiel
                 </span>
-              </div>
+              </button>
             )}
           </div>
         </div>

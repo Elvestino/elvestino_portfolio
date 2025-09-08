@@ -165,12 +165,12 @@ export default function ModalGallery({
               </span>
             </div>
             <span>
-              Pour plus d&apos;information, veuiller cliquer{" "}
+              For more information, please click{" "}
               <a
                 href={link}
                 className="text-[#7cf03d] hover:text-green-500 underline italic"
               >
-                ici
+                here
               </a>
             </span>
           </motion.div>
