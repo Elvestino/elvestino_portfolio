@@ -1,18 +1,7 @@
 "use client";
-
-import { useState } from "react";
-import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
+import Carousel from "../Carousel";
 
 export default function Experience() {
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  const nextSlide = () => {
-    setCurrentIndex((prev) => (prev === experiences.length - 1 ? 0 : prev + 1));
-  };
-
-  const prevSlide = () => {
-    setCurrentIndex((prev) => (prev === 0 ? experiences.length - 1 : prev - 1));
-  };
   const experiences = [
     {
       title: "Data Analyst Training",
@@ -38,8 +27,8 @@ export default function Experience() {
   ];
   return (
     <section className="px-4 sm:px-6 lg:px-12 py-8 max-md:mx-5">
-      <h2 className="text-2xl sm:text-3xl font-bold mb-6 text-center text-[#7cf03d]">
-        My <span className="text-white">Experience</span>
+      <h2 className="w-full text-4xl font-bold text-center mb-5 max-md:text-3xl">
+        My <span className="text-[#7cf03d]">Experience</span>
       </h2>
       {/* Desktop / Tablet Grid */}
       <div className="hidden sm:grid max-w-6xl mx-auto grid-cols-2 lg:grid-cols-3 gap-6">
@@ -72,67 +61,33 @@ export default function Experience() {
       </div>
 
       {/* Mobile Carousel */}
-      <div className="sm:hidden max-w-md mx-auto relative">
-        {/* Flèches à l'extérieur */}
-        <button
-          onClick={prevSlide}
-          className="absolute left-[-45px] top-1/2 -translate-y-1/2 text-[#7cf03d] text-3xl p-1 cursor-pointer border border-[#7cf03d] rounded-full hover:bg-[#7cf03d] hover:text-[#1f242d] hover:shadow-[0_0_10px_#7cf03d] duration-500"
-        >
-          <IoIosArrowBack />
-        </button>
-        <button
-          onClick={nextSlide}
-          className="absolute right-[-45px] top-1/2 -translate-y-1/2 text-[#7cf03d] text-3xl p-1 cursor-pointer border border-[#7cf03d] rounded-full hover:bg-[#7cf03d] hover:text-[#1f242d] hover:shadow-[0_0_10px_#7cf03d] duration-500"
-        >
-          <IoIosArrowForward />
-        </button>
-
-        <div className="overflow-hidden">
-          <div
-            className="flex transition-transform duration-300 gap-4"
-            style={{ transform: `translateX(-${currentIndex * 100}%)` }}
-          >
-            {experiences.map((exp, index) => {
-              return (
-                <div
-                  key={index}
-                  className="flex-shrink-0 w-[94%] mx-auto bg-[#22222c] text-white rounded-xl p-6 shadow-lg "
-                >
-                  <div className="text-center mb-2">
-                    <h3 className="text-xl font-semibold mb-2 text-[#7cf03d]">
-                      {exp.title}
-                    </h3>
-                    <p className="text-gray-400 text-xs text-center">
-                      {exp.company}
-                    </p>
-                  </div>
-                  {exp.description && (
-                    <p className="text-gray-400 text-[15px] font-bold mb-2">
-                      {exp.description}
-                    </p>
-                  )}
-                  <p className="text-base font-medium">
-                    <span className="italic text-[#7cf03d]"> Years :</span>{" "}
-                    {exp.year}
-                  </p>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-
-        {/* Dots cliquables */}
-        <div className="flex justify-center mt-4 gap-2">
-          {experiences.map((_, index) => (
-            <span
+      <div className="sm:hidden max-w-md mx-auto relative max-md:mx-4">
+        <Carousel
+          items={experiences.map((exp, index) => (
+            <div
               key={index}
-              onClick={() => setCurrentIndex(index)}
-              className={`w-3 h-3 rounded-full cursor-pointer transition-all ${
-                index === currentIndex ? "bg-[#7cf03d]" : "bg-gray-500"
-              }`}
-            ></span>
+              className="flex-shrink-0 w-[94%] mx-auto bg-[#22222c] text-white rounded-xl p-6 shadow-lg "
+            >
+              <div className="text-center mb-2">
+                <h3 className="text-xl font-semibold mb-2 text-[#7cf03d]">
+                  {exp.title}
+                </h3>
+                <p className="text-gray-400 text-xs text-center">
+                  {exp.company}
+                </p>
+              </div>
+              {exp.description && (
+                <p className="text-gray-400 text-[15px] font-bold mb-2">
+                  {exp.description}
+                </p>
+              )}
+              <p className="text-base font-medium">
+                <span className="italic text-[#7cf03d]"> Years :</span>{" "}
+                {exp.year}
+              </p>
+            </div>
           ))}
-        </div>
+        />
       </div>
     </section>
   );

@@ -99,7 +99,7 @@ export default function ProjectCard({ project }: { project: ProjectType }) {
               >
                 <FaGithub className="text-white text-lg sm:text-xl transition-transform duration-300 group-hover:scale-125 group-hover:text-[#7cf03d]" />
                 <span className="text-xs sm:text-sm text-gray-300 group-hover:text-[#7cf03d]">
-                  Disponible
+                  Available
                 </span>
               </a>
             ) : (
@@ -109,7 +109,7 @@ export default function ProjectCard({ project }: { project: ProjectType }) {
               >
                 <FaGithub className="text-gray-500 text-lg sm:text-xl" />
                 <span className="text-xs sm:text-sm text-gray-400 font-bold">
-                  Confidentiel
+                  Confidential
                 </span>
               </button>
             )}
@@ -125,23 +125,21 @@ export default function ProjectCard({ project }: { project: ProjectType }) {
         <div className="flex flex-wrap gap-3 text-xs sm:text-sm text-gray-300 mb-2">
           <span className="text-[#7cf03d] flex items-center gap-1">
             <AiOutlineCalendar />
-            {project.month} <span className="text-gray-400">Mois</span>
+            {project.month} <span className="text-gray-400">Month</span>
           </span>
           <span className="text-[#7cf03d] flex items-center gap-1">
-            <span className="text-gray-400">Année :</span> {project.year}
+            <span className="text-gray-400">Year :</span> {project.year}
           </span>
           <span className="text-[#7cf03d] flex items-center gap-1">
             <FaUsers />
             {project.nbrContribuate}{" "}
-            <span className="text-gray-400">developpeur</span>
+            <span className="text-gray-400">developer</span>
           </span>
         </div>
 
         {/* Fonctionnalités */}
         <div className="mb-2">
-          <h4 className="text-sm font-semibold text-white">
-            Fonctionnalités clé :
-          </h4>
+          <h4 className="text-sm font-semibold text-white">Key Features:</h4>
           <div className="flex flex-wrap gap-2 mt-1">
             {project.key.map((tech, i) => (
               <span
@@ -157,7 +155,7 @@ export default function ProjectCard({ project }: { project: ProjectType }) {
         {/* Technologies */}
         <div className="mb-2">
           <h4 className="text-sm font-semibold text-white">
-            Technologies utilisées :
+            Technologies used:
           </h4>
           <div className="flex flex-wrap gap-2 mt-1">
             {project.technology.map((tech, i) => (

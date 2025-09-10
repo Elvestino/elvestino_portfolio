@@ -1,10 +1,9 @@
 "use client";
 import { ReactNode, useState } from "react";
 import ProjectCard from "@/app/components/ProjectCard";
-
-import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { ProjectType } from "@/app/models/projectType";
 import { Layers, CheckCircle, Briefcase, BookOpen } from "lucide-react";
+import Carousel from "@/app/components/Carousel";
 
 // Exemple de données
 const aurum: ProjectType[] = [
@@ -222,19 +221,6 @@ const categories: {
 
 export default function ProjectsSection() {
   const [activeTab, setActiveTab] = useState("All");
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  const nextSlide = () => {
-    setCurrentIndex((prev) =>
-      prev === currentCategory.projects.length - 1 ? 0 : prev + 1
-    );
-  };
-
-  const prevSlide = () => {
-    setCurrentIndex((prev) =>
-      prev === 0 ? currentCategory.projects.length - 1 : prev - 1
-    );
-  };
 
   const currentCategory =
     categories.find((cat) => cat.title === activeTab) || categories[0];
@@ -242,7 +228,7 @@ export default function ProjectsSection() {
   return (
     <div className="px-4 sm:px-6 lg:px-12  max-md:mx-5 max-md:my-3">
       <div className="mx-auto p-6 mb-5 md:mb-6">
-        <h2 className="text-4xl md:text-6xl text-center md:mb-6 mb-5">
+        <h2 className="w-full text-5xl font-bold text-center mb-5 max-md:text-3xl">
           My <span className="text-[#7cf03d]">Projects</span>
         </h2>
         <p className="text-sm md:text-lg text-center">
@@ -285,45 +271,11 @@ export default function ProjectsSection() {
 
       {/*Grille des projets version Mobile Carousel */}
       <div className="sm:hidden max-w-md mx-auto relative max-md:mx-4">
-        {/* Flèches */}
-        <button
-          onClick={prevSlide}
-          className="absolute left-[-45px] top-1/2 -translate-y-1/2 text-[#7cf03d] text-3xl p-1 cursor-pointer border border-[#7cf03d] rounded-full hover:bg-[#7cf03d] hover:text-[#1f242d] hover:shadow-[0_0_10px_#7cf03d] duration-500"
-        >
-          <IoIosArrowBack />
-        </button>
-        <button
-          onClick={nextSlide}
-          className="absolute right-[-45px] top-1/2 -translate-y-1/2 text-[#7cf03d] text-3xl p-1 cursor-pointer border border-[#7cf03d] rounded-full hover:bg-[#7cf03d] hover:text-[#1f242d] hover:shadow-[0_0_10px_#7cf03d] duration-500"
-        >
-          <IoIosArrowForward />
-        </button>
-
-        <div className="overflow-hidden">
-          <div
-            className="flex transition-transform duration-300 gap-4"
-            style={{ transform: `translateX(-${currentIndex * 100}%)` }}
-          >
-            {currentCategory.projects.map((project, index) => (
-              <div key={index} className="flex-shrink-0 max-md:w-[96%] mx-auto">
-                <ProjectCard key={index} project={project} />
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Dots */}
-        <div className="flex justify-center mt-4 gap-2">
-          {currentCategory.projects.map((_, index) => (
-            <span
-              key={index}
-              onClick={() => setCurrentIndex(index)}
-              className={`w-3 h-3 rounded-full cursor-pointer transition-all ${
-                index === currentIndex ? "bg-[#7cf03d]" : "bg-gray-500"
-              }`}
-            ></span>
+        <Carousel
+          items={currentCategory.projects.map((project, index) => (
+            <ProjectCard key={index} project={project} />
           ))}
-        </div>
+        />
       </div>
     </div>
   );

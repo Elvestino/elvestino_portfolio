@@ -76,7 +76,7 @@ export default function ResumeSection() {
   return (
     <div className="p-6 flex flex-col items-center justify-center md:mt-3">
       <div className="mx-auto p-6 mb-5 md:mb-6">
-        <h2 className="text-4xl md:text-6xl text-center md:mb-6 mb-5">
+        <h2 className="w-full text-5xl font-bold text-center mb-5 max-md:text-3xl">
           Why <span className="text-[#7cf03d]">hire me</span> ?
         </h2>
         <p className="text-sm md:text-lg text-center">
