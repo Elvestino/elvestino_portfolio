@@ -32,7 +32,7 @@ const socialLinks = [
 
 export default function SocialLinks() {
   return (
-    <div className="flex items-center gap-4 ml-4">
+    <div className="flex items-center gap-4">
       {socialLinks.map((link, index) => (
         <Link
           key={index}
