@@ -226,7 +226,7 @@ export default function ProjectsSection() {
     categories.find((cat) => cat.title === activeTab) || categories[0];
 
   return (
-    <div className="px-4 sm:px-6 lg:px-12  max-md:mx-5 max-md:my-3">
+    <div className="px-4 sm:px-6 lg:px-12  max-md:mx-5 max-md:my-3 max-w-[1920px]">
       <div className="mx-auto p-6 mb-5 md:mb-6">
         <h2 className="w-full text-5xl font-bold text-center mb-5 max-md:text-3xl">
           My <span className="text-[#7cf03d]">Projects</span>

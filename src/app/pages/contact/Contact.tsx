@@ -27,8 +27,8 @@ export default function ContactSection() {
   };
 
   return (
-    <section className="min-h-screen flex justify-center items-center max-md:py-6 px-8 max-md:px-5 text-white">
-      <div className="max-w-6xl w-full">
+    <section className=" flex justify-center items-center max-md:py-6 px-8 md:my-20 max-md:px-5 text-white max-w-[1920px]">
+      <div className="max-w-6xl w-full md:my-10">
         {/* Titre principal */}
         <h2 className="w-full text-5xl font-bold text-center mb-10 max-md:text-3xl max-md:mb-6">
           How Contact <span className="text-[#7cf03d]">Me</span>
@@ -46,7 +46,7 @@ export default function ContactSection() {
         </div>
 
         {/* Colonnes (formulaire + infos) */}
-        <div className="flex flex-row max-md:flex-col-reverse justify-center items-start gap-12 max-md:gap-8">
+        <div className="flex flex-row-reverse max-md:flex-col-reverse justify-center items-start gap-12 max-md:gap-8">
           {/* ---------- Infos (GAUCHE) ---------- */}
           <div className="flex-1 min-w-[320px] flex flex-col space-y-6 animate-slideInLeft max-md:min-w-full max-md:space-y-4">
             {/* Phone */}

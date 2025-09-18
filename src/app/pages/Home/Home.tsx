@@ -17,7 +17,7 @@ export default function HomeSection() {
     return () => clearInterval(interval);
   }, [texts.length]);
   return (
-    <main>
+    <main className="max-w-[1920px]">
       {/* Hero section */}
       <section className="flex flex-col-reverse md:flex-row items-center justify-between gap-12 flex-grow px-[9%]">
         {/* Texte à gauche */}
@@ -34,7 +34,7 @@ export default function HomeSection() {
             </h1>
 
             {/* Texte animé */}
-            <h2 className="mt-2 text-3xl ">
+            <h2 className="mt-2 text-2xl md:text-3xl">
               I&apos;m a{" "}
               <span className="relative text-transparent [-webkit-text-stroke:0.7px_#7cf03d]">
                 {texts[currentText]}
@@ -55,12 +55,12 @@ export default function HomeSection() {
           </div>
 
           {/* Bouton + Réseaux */}
-          <div className="flex items-center justify-center mt-6 max-md:flex-col max-md:gap-4">
+          <div className="flex flex-col items-start mt-6 max-md:flex-col max-md:gap-4">
             <div className="flex gap-4 mb-3">
               <DownloadCV />
               <LetsTalk />
             </div>
-            <div className="md:ml-6">
+            <div className=" flex items-start mt-3">
               <SocialLinks />
             </div>
           </div>
