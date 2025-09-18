@@ -26,7 +26,7 @@ export default function HeaderDesktop({
 
   return (
     <header
-      className={`hidden md:flex fixed top-0 mx-3 left-1/2 transform -translate-x-1/2 z-50 transition-all duration-300 w-full max-w-[1920px] ${
+      className={`hidden md:flex fixed top-0 px-3 left-1/2 transform -translate-x-1/2 z-50 transition-all duration-300 w-full max-w-[1920px] ${
         isScrolled ? "bg-[#101828]/80 backdrop-blur-md shadow-lg" : ""
       }`}
     >
