@@ -263,7 +263,7 @@ export default function ProjectsSection() {
       </div>
 
       {/* ---------------- Grille des projets version normal ---------------- */}
-      <div className="hidden sm:grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-md:">
+      <div className="hidden sm:grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:mx-32">
         {currentCategory.projects.map((project, idx) => (
           <ProjectCard key={idx} project={project} />
         ))}

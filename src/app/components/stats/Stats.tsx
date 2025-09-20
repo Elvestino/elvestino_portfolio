@@ -11,7 +11,7 @@ export default function Stats() {
 
   return (
     <section className="relative py-5 md:py-12 overflow-hidden my-10 md:my-10 bg-[#7cf03d]">
-      <div className="container mx-auto px-4">
+      <div className=" mx-auto px-7">
         {/* Responsive grid */}
         <div className="grid grid-cols-2 gap-6 md:grid-cols-4 text-center">
           {exp.map((item, index) => (
@@ -24,7 +24,7 @@ export default function Stats() {
                 end={item.num}
                 duration={3}
                 delay={0.5}
-                className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-white"
+                className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-black/80"
               />
               {/* Texte */}
               <p className="text-xs sm:text-sm md:text-base text-black/80 leading-snug">

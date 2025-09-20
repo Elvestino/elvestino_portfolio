@@ -55,7 +55,7 @@ export default function HomeSection() {
           </div>
 
           {/* Bouton + Réseaux */}
-          <div className="flex flex-col items-start mt-6 max-md:flex-col max-md:gap-4">
+          <div className="flex flex-col items-center md:items-start mt-6 max-md:flex-col max-md:gap-4">
             <div className="flex gap-4 mb-3">
               <DownloadCV />
               <LetsTalk />
