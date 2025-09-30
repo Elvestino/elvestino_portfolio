@@ -2,11 +2,18 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 
 export default function Photos() {
+  // Définir les classes de taille comme une constante pour plus de lisibilité
+  // La taille par défaut (mobile) est réduite à 300px.
+  // Elle passe à 400px à partir de sm (640px) et à 600px à partir de xl (1280px).
+  const sizeClasses =
+    "w-[300px] h-[300px] sm:w-[400px] sm:h-[400px] xl:w-[600px] xl:h-[600px]";
+
   return (
     <div className="relative flex items-center justify-center">
       {/* Cercle animé derrière */}
       <motion.svg
-        className="absolute w-[400px] h-[400px] xl:w-[600px] xl:h-[600px] z-0"
+        // Utilisation des classes de taille définies
+        className={`absolute ${sizeClasses} z-0`}
         fill="transparent"
         viewBox="0 0 506 506"
         xmlns="http://www.w3.org/2000/svg"
@@ -39,11 +46,15 @@ export default function Photos() {
           opacity: 1,
           transition: { delay: 0.8, duration: 0.6, ease: "easeInOut" },
         }}
-        className="relative w-[400px] h-[400px] xl:w-[600px] xl:h-[600px] z-10"
+        // Utilisation des classes de taille définies
+        className={`relative ${sizeClasses} z-10`}
       >
         <Image
           src="/assets/image.png"
           alt="profile"
+          // Les attributs width et height doivent rester à la taille maximale (600)
+          // pour des raisons d'optimisation Next.js/performance,
+          // le CSS gère le redimensionnement réel.
           width={600}
           height={600}
           className="object-cover rounded-full"

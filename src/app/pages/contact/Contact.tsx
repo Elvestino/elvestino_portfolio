@@ -50,8 +50,8 @@ export default function ContactSection() {
           {/* ---------- Infos (GAUCHE) ---------- */}
           <div className="flex-1 min-w-[320px] flex flex-col space-y-6 animate-slideInLeft max-md:min-w-full max-md:space-y-4">
             {/* Phone */}
-            <div className="flex items-center gap-4 border border-[#7cf03d] rounded-lg p-4 shadow-2xl max-md:p-3">
-              <div className="w-14 h-14 border-2 border-[#7cf03d] rounded-full flex items-center justify-center max-md:w-12 max-md:h-12">
+            <div className="flex items-center gap-4 border border-[#7cf03d] rounded-lg p-4 shadow-2xl max-md:p-3 ">
+              <div className="w-14 h-14 border-2 border-[#7cf03d] rounded-full flex items-center justify-center max-md:w-12 max-md:h-12 min-md:w-5 min-md:h-5">
                 <BiPhone
                   size={40}
                   color="#7cf03d"
