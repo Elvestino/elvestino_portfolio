@@ -4,7 +4,7 @@ import Photos from "@/app/components/photos/Photos";
 
 export default function AboutMeSection() {
   return (
-    <main className="flex flex-col items-center gap-12 px-6 lg:px-16 xl:px-24 2xl:px-40 md:mt-5 max-w-[1144px] ">
+    <main className="flex flex-col items-center gap-12 px-6 lg:px-16 xl:px-24 2xl:px-40 md:mt-5 max-w-[1920px] ">
       <h2 className="w-full text-5xl font-bold text-center mb-5 max-md:text-3xl">
         About <span className="text-[#7cf03d]">Me</span>
       </h2>
