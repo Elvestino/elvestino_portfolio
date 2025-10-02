@@ -27,7 +27,7 @@ export default function ContactSection() {
   };
 
   return (
-    <section className=" flex justify-center items-center max-md:py-6 px-8 md:my-20 max-md:px-5 text-white max-w-[1920px]">
+    <section className=" flex justify-center items-center max-md:py-6 px-8 md:my-20 max-md:px-5 text-white max-w-[1144px]">
       <div className="max-w-6xl w-full md:my-10">
         {/* Titre principal */}
         <h2 className="w-full text-5xl font-bold text-center mb-10 max-md:text-3xl max-md:mb-6">

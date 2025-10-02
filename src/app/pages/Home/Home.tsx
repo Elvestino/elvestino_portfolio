@@ -17,7 +17,7 @@ export default function HomeSection() {
     return () => clearInterval(interval);
   }, [texts.length]);
   return (
-    <main className="max-w-[1920px]">
+    <main className="max-w-[1144px]">
       {/* Hero section */}
       <section className="flex flex-col-reverse md:flex-row items-center justify-between gap-12 flex-grow px-[9%]">
         {/* Texte à gauche */}
