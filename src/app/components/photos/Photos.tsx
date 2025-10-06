@@ -50,7 +50,7 @@ export default function Photos() {
         className={`relative ${sizeClasses} z-10`}
       >
         <Image
-          src="/assets/image.png"
+          src="/assets/image.svg"
           alt="profile"
           // Les attributs width et height doivent rester à la taille maximale (600)
           // pour des raisons d'optimisation Next.js/performance,
