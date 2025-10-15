@@ -32,15 +32,18 @@ export default function AboutMeSection() {
           <p>
             My main expertise lies in{" "}
             <span className="font-semibold text-[#7cf03d]">
-              front-end web development
+              web development
             </span>{" "}
             with technologies such as{" "}
-            <span className="font-semibold text-[#7cf03d]">NextJS</span> with{" "}
+            <span className="font-semibold text-[#7cf03d]">
+              ReactJS and NextJS
+            </span>{" "}
+            with{" "}
             <span className="font-semibold text-[#7cf03d]">TypeScript</span>.
           </p>
 
           <p>
-            I focus on{" "}
+            I am also working in{" "}
             <span className="font-semibold text-[#7cf03d]">data analysis</span>{" "}
             using <span className="font-semibold text-[#7cf03d]">PowerBi</span>{" "}
             as a tool for analysis, modeling, and visualization.

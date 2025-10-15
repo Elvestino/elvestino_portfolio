@@ -4,8 +4,8 @@ import CountUp from "react-countup";
 export default function Stats() {
   const exp = [
     { num: 1, text: "Years of experience" },
-    { num: 8, text: "Technology mastered" },
-    { num: 3, text: "Finish Project" },
+    { num: 4, text: "Technology mastered" },
+    { num: 3, text: "Project completed" },
     { num: 300, text: "Code commit" },
   ];
 
